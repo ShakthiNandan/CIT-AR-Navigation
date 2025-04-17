@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>AR Navigator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- A-Frame + AR.js -->
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: sans-serif;
+            z-index: 5;
+        }
+
+        select,
+        button {
+            margin: 0 4px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h1 class="app-title">CIT AR Navigation</h1>
+            </div>
+        </header>
+
+        <!-- UI Overlay -->
+        <div id="ui">
+            <label>From:
+                <select id="fromSelect">
+                    <option value="">Select Starting Point</option>
+                </select>
+            </label>
+            →
+            <label>To:
+                <select id="toSelect">
+                    <option value="">Select Destination</option>
+                </select>
+            </label>
+            <button id="goBtn">Go</button>
+        </div>
+
+        <!-- AR Scene -->
+        <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; 
+                  debugUIEnabled: false;">
+            <a-assets>
+                <a-asset-item id="arrowObj" src="/static/models/arrow.obj"></a-asset-item>
+                <a-asset-item id="arrowMtl" src="/static/models/arrow.mtl"></a-asset-item>
+                <a-asset-item id="pinObj" src="/static/models/pin.obj"></a-asset-item>
+                <a-asset-item id="pinMtl" src="/static/models/pin.mtl"></a-asset-item>
+            </a-assets>
+
+            <!-- GPS camera -->
+            <a-camera gps-camera rotation-reader></a-camera>
+
+            
+        </a-scene>
+
+        <!-- Loading Indicator -->
+        <div class="loading">Calculating route...</div>
+    </div>
+
+    <script>
+        const sceneEl = document.querySelector('a-scene');
+        let scenesList = [];
+        const loading = document.querySelector('.loading');
+
+        // Load scenes.json
+        fetch('/scenes.json')
+            .then(r => r.json())
+            .then(arr => {
+                scenesList = arr;
+                arr.forEach((s, i) => {
+                    fromSelect.append(new Option(s.title, i));
+                    toSelect.append(new Option(s.title, i));
+                });
+            });
+
+        // Bearing formula
+        function computeBearing(lat1, lon1, lat2, lon2) {
+            const toRad = Math.PI / 180, toDeg = 180 / Math.PI;
+            const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
+            const Δλ = (lon2 - lon1) * toRad;
+            const y = Math.sin(Δλ) * Math.cos(φ2);
+            const x = Math.cos(φ1) * Math.sin(φ2) -
+                Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+            return (Math.atan2(y, x) * toDeg + 360) % 360;
+        }
+
+        // Clear existing navigation elements
+        function clearNav() {
+            document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
+        }
+
+        // Start navigation
+        async function startNavigation() {
+            const fi = +fromSelect.value, ti = +toSelect.value;
+            if (isNaN(fi) || isNaN(ti)) {
+                alert('Please select both starting point and destination');
+                return;
+            }
+
+            loading.classList.add('active');
+            clearNav();
+
+            try {
+                const res = await fetch(`/api/route?from=${fi}&to=${ti}`);
+                const path = await res.json();
+                if (!Array.isArray(path) || path.length < 2) {
+                    throw new Error('Invalid route data');
+                }
+
+                const start = path[0], end = path[1];
+                const bearing = computeBearing(
+                    start.latitude, start.longitude,
+                    end.latitude, end.longitude
+                );
+
+                // Place arrow at start
+                const arrow = document.createElement('a-entity');
+                arrow.setAttribute('gps-entity-place',
+                    `latitude: ${start.latitude}; longitude: ${start.longitude};`);
+                arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
+                arrow.setAttribute('rotation', `0 ${bearing} 0`);
+                arrow.setAttribute('scale', '5 5 5');
+                arrow.classList.add('nav-arrow');
+                sceneEl.appendChild(arrow);
+
+                // Place pin at destination
+                const pin = document.createElement('a-entity');
+                pin.setAttribute('gps-entity-place',
+                    `latitude: ${end.latitude}; longitude: ${end.longitude};`);
+                pin.setAttribute('obj-model', 'obj: #pinObj; mtl: #pinMtl');
+                pin.setAttribute('scale', '5 5 5');
+                pin.classList.add('nav-pin');
+                sceneEl.appendChild(pin);
+
+            } catch (error) {
+                console.error('Navigation error:', error);
+                alert('Error calculating route. Please try again.');
+            } finally {
+                loading.classList.remove('active');
+            }
+        }
+
+        // Event Listeners
+        goBtn.addEventListener('click', startNavigation);
+    </script>
+</body>
+
+</html>
