@@ -87,44 +87,63 @@
               Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
           return (Math.atan2(y, x) * toDeg + 360) % 360;
       }
+      function clearNav() {
+            document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
+        }
 
-      // 3) Request route & render only arrow + pin
-      async function generateRoute() {
-          // clear any old markers
-          document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
+        // Start navigation
+        async function startNavigation() {
+            const fi = +fromSelect.value, ti = +toSelect.value;
+            if (isNaN(fi) || isNaN(ti)) {
+                alert('Please select both starting point and destination');
+                return;
+            }
 
-          const fromIdx = document.getElementById('fromSelect').value;
-          const toIdx = document.getElementById('toSelect').value;
-          const res = await fetch(`/api/route?from=${fromIdx}&to=${toIdx}`);
-          const path = await res.json();           // [ startScene, endScene ]
+            loading.classList.add('active');
+            clearNav();
 
-          const start = path[0], end = path[1];
-          const bearing = computeBearing(
-              start.latitude, start.longitude,
-              end.latitude, end.longitude
-          );
+            try {
+                const res = await fetch(`/api/route?from=${fi}&to=${ti}`);
+                const path = await res.json();
+                if (!Array.isArray(path) || path.length < 2) {
+                    throw new Error('Invalid route data');
+                }
 
-          // 3a) Place a single arrow at the start, rotated toward end
-          const arrow = document.createElement('a-entity');
-          arrow.setAttribute('gps-entity-place',
-              `latitude: ${start.latitude}; longitude: ${start.longitude};`);
-          arrow.setAttribute('obj-model', `obj: #arrowModel; mtl: #arrowModelMtl`);
-          arrow.setAttribute('rotation', `0 ${bearing} 0`);
-          arrow.setAttribute('scale', '5 5 5');
-          arrow.classList.add('nav-arrow');
-          sceneEl.appendChild(arrow);
+                const start = path[0], end = path[1];
+                const bearing = computeBearing(
+                    start.latitude, start.longitude,
+                    end.latitude, end.longitude
+                );
 
-          // 3b) Place the destination pin
-          const pin = document.createElement('a-entity');
-          pin.setAttribute('gps-entity-place',
-              `latitude: ${end.latitude}; longitude: ${end.longitude};`);
-          pin.setAttribute('obj-model',`obj: #pinModel;mtl:#pinModelMtl`);
-          pin.setAttribute('scale', '5 5 5');
-          pin.classList.add('nav-pin');
-          sceneEl.appendChild(pin);
-      }
+                // Place arrow at start
+                const arrow = document.createElement('a-entity');
+                arrow.setAttribute('gps-entity-place',
+                    `latitude: ${start.latitude}; longitude: ${start.longitude};`);
+                arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
+                arrow.setAttribute('rotation', `0 ${bearing} 0`);
+                arrow.setAttribute('scale', '5 5 5');
+                arrow.classList.add('nav-arrow');
+                sceneEl.appendChild(arrow);
 
-      document.getElementById('goBtn').addEventListener('click', generateRoute);
+                // Place pin at destination
+                const pin = document.createElement('a-entity');
+                pin.setAttribute('gps-entity-place',
+                    `latitude: ${end.latitude}; longitude: ${end.longitude};`);
+                pin.setAttribute('obj-model', 'obj: #pinObj; mtl: #pinMtl');
+                pin.setAttribute('scale', '5 5 5');
+                pin.classList.add('nav-pin');
+                sceneEl.appendChild(pin);
+
+            } catch (error) {
+                console.error('Navigation error:', error);
+                alert('Error calculating route. Please try again.');
+            } finally {
+                loading.classList.remove('active');
+            }
+        }
+
+        // Event Listeners
+        goBtn.addEventListener('click', startNavigation);
   </script>
       
 </body>
