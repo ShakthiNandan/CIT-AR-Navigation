@@ -31,41 +31,46 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
       z-index: 10;
       pointer-events: none;
-    }
-
-    .ar-ui-container * {
-      pointer-events: auto;
+      display: flex;
+      justify-content: center;
     }
 
     #ui {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
+      flex-wrap: wrap;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(8px);
-      padding: 12px 16px;
-      border-radius: 24px;
+      padding: 12px;
+      border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      z-index: 11;
+      pointer-events: auto;
+      max-width: 90vw;
     }
 
     #ui select,
     #ui button {
       padding: 8px 12px;
-      border: none;
+      border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 1rem;
       background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       cursor: pointer;
+      flex: 1 1 100px;
+      min-width: 100px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       transition: transform .1s ease, box-shadow .1s ease;
+    }
+
+    #ui button {
+      background: #1e90ff;
+      color: #fff;
+      border: none;
     }
 
     #ui select:focus,
@@ -80,10 +85,8 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
-    #ui button {
-      background: #1e90ff;
-      color: #fff;
-      font-weight: 500;
+    @media (max-width: 480px) {
+      #ui { flex-direction: column; align-items: stretch; }
     }
   </style>
 </head>
@@ -102,14 +105,11 @@
     <a-camera gps-camera rotation-reader></a-camera>
   </a-scene>
 
+  <!-- UI Container -->
   <div class="ar-ui-container">
     <div id="ui">
-      <label>From:
-        <select id="fromSelect"></select>
-      </label>
-      <label>To:
-        <select id="toSelect"></select>
-      </label>
+      <select id="fromSelect"><option value="">From</option></select>
+      <select id="toSelect"><option value="">To</option></select>
       <button id="goBtn">Navigate</button>
     </div>
   </div>
@@ -118,7 +118,7 @@
     const sceneEl = document.querySelector('a-scene');
     let scenesList = [];
 
-    // Load your scenes once
+    // Load scenes.json and populate dropdowns
     fetch('/scenes.json')
       .then(r => r.json())
       .then(arr => {
@@ -129,13 +129,22 @@
         });
       });
 
-    // Compute bearing between two lat/lon points
+    // Haversine in meters
+    function haversineMeters(lat1, lon1, lat2, lon2) {
+      const toRad = Math.PI/180;
+      const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
+      const Δφ = (lat2 - lat1) * toRad;
+      const Δλ = (lon2 - lon1) * toRad;
+      const a = Math.sin(Δφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(Δλ/2)**2;
+      return 2 * 6371000 * Math.asin(Math.sqrt(a));
+    }
+
+    // Bearing formula
     function computeBearing(lat1, lon1, lat2, lon2) {
-      const toRad = Math.PI / 180, toDeg = 180 / Math.PI;
+      const toRad = Math.PI/180, toDeg = 180/Math.PI;
       const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δλ = (lon2 - lon1) * toRad;
       const y = Math.sin(Δλ) * Math.cos(φ2);
-      const x = Math.cos(φ1) * Math.sin(φ2)
-              - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+      const x = Math.cos(φ1)*Math.sin(φ2) - Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
       return (Math.atan2(y, x) * toDeg + 360) % 360;
     }
 
@@ -145,44 +154,51 @@
 
     async function generateRoute() {
       clearNav();
+      const fromIdx = +fromSelect.value;
+      const toIdx   = +toSelect.value;
+      if (isNaN(fromIdx) || isNaN(toIdx)) return;
 
-      const fromIdx = fromSelect.value;
-      const toIdx = toSelect.value;
-      const res = await fetch(`/api/route?from=${fromIdx}&to=${toIdx}`);
+      const res  = await fetch(`/api/route?from=${fromIdx}&to=${toIdx}`);
       const path = await res.json();
       if (!Array.isArray(path) || path.length < 2) return;
 
-      // Place pins & arrows along the entire path
-      // Lower offset
-      const yOffset = -0.3;
+      const yOffset = -0.2;          // slight elevation drop
+      const spacing = 10;            // meters between arrows
 
-      path.forEach((node, idx) => {
-        // Pin at both start & end
-        if (idx === 0 || idx === path.length - 1) {
-          const pin = document.createElement('a-entity');
-          pin.setAttribute('gps-entity-place', `latitude: ${node.latitude}; longitude: ${node.longitude};`);
-          pin.setAttribute('obj-model', 'obj: #pinObj; mtl: #pinMtl');
-          pin.setAttribute('scale', '1.5 1.5 1.5');
-          pin.setAttribute('position', `0 ${yOffset} 0`);
-          pin.classList.add('nav-pin');
-          sceneEl.appendChild(pin);
-        }
+      // Place pins at start & end
+      [0, path.length - 1].forEach(idx => {
+        const node = path[idx];
+        const pin = document.createElement('a-entity');
+        pin.setAttribute('gps-entity-place', `latitude: ${node.latitude}; longitude: ${node.longitude};`);
+        pin.setAttribute('obj-model','obj: #pinObj; mtl: #pinMtl');
+        pin.setAttribute('scale','1.2 1.2 1.2');
+        pin.setAttribute('position', `0 ${yOffset} 0`);
+        pin.classList.add('nav-pin');
+        sceneEl.appendChild(pin);
+      });
 
-        // Arrow for every segment (except after last)
-        if (idx < path.length - 1) {
-          const next = path[idx + 1];
-          const bearing = computeBearing(node.latitude, node.longitude, next.latitude, next.longitude);
+      // For each path segment, interpolate arrows
+      for (let i = 0; i < path.length - 1; i++) {
+        const a = path[i], b = path[i+1];
+        const dist = haversineMeters(a.latitude, a.longitude, b.latitude, b.longitude);
+        const count = Math.max(1, Math.floor(dist/spacing));
+        const bearing = computeBearing(a.latitude, a.longitude, b.latitude, b.longitude);
+
+        for (let j = 0; j <= count; j++) {
+          const frac = j / count;
+          const lat = a.latitude + (b.latitude - a.latitude) * frac;
+          const lon = a.longitude + (b.longitude - a.longitude) * frac;
           const arrow = document.createElement('a-entity');
-          arrow.setAttribute('gps-entity-place', `latitude: ${node.latitude}; longitude: ${node.longitude};`);
-          arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
+          arrow.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon};`);
+          arrow.setAttribute('obj-model','obj: #arrowObj; mtl: #arrowMtl');
           arrow.setAttribute('rotation', `0 ${bearing} 0`);
-          arrow.setAttribute('scale', '1 1 1');
+          arrow.setAttribute('scale','0.8 0.8 0.8');
           arrow.setAttribute('position', `0 ${yOffset} 0`);
-          arrow.setAttribute('material', 'color: blue');
+          arrow.setAttribute('material','color: blue; shader: flat');
           arrow.classList.add('nav-arrow');
           sceneEl.appendChild(arrow);
         }
-      });
+      }
     }
 
     goBtn.addEventListener('click', generateRoute);
