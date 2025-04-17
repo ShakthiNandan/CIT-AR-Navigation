@@ -24,6 +24,11 @@
             z-index: 100;
             width: 90%;
             max-width: 500px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-controls.hidden {
+            transform: translate(-50%, -100%);
         }
 
         .controls-container {
@@ -97,28 +102,53 @@
         .loading.active {
             display: block;
         }
+
+        .toggle-ui {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-ui:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
 <body>
+    <!-- Toggle UI Button -->
+    <button class="toggle-ui" id="toggleUI">☰</button>
 
-        <!-- Navigation Controls -->
-        <div class="nav-controls">
-            <div class="controls-container">
-                <div class="select-wrapper">
-                    <select id="fromSelect">
-                        <option value="">Select Starting Point</option>
-                    </select>
-                </div>
-                <div class="select-wrapper">
-                    <select id="toSelect">
-                        <option value="">Select Destination</option>
-                    </select>
-                </div>
-                <button id="goBtn">Start Navigation</button>
-                <div id="distance">Distance: — m</div>
+    <!-- Navigation Controls -->
+    <div class="nav-controls" id="navControls">
+        <div class="controls-container">
+            <div class="select-wrapper">
+                <select id="fromSelect">
+                    <option value="">Select Starting Point</option>
+                </select>
             </div>
+            <div class="select-wrapper">
+                <select id="toSelect">
+                    <option value="">Select Destination</option>
+                </select>
+            </div>
+            <button id="goBtn">Start Navigation</button>
+            <div id="distance">Distance: — m</div>
         </div>
+    </div>
 
     <!-- AR Scene -->
     <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;"
@@ -138,6 +168,14 @@
     <script>
         const sceneEl = document.querySelector('a-scene');
         let scenesList = [];
+
+        // Toggle UI visibility
+        const toggleUI = document.getElementById('toggleUI');
+        const navControls = document.getElementById('navControls');
+        toggleUI.addEventListener('click', () => {
+            navControls.classList.toggle('hidden');
+            toggleUI.textContent = navControls.classList.contains('hidden') ? '☰' : '×';
+        });
 
         // Haversine formula for distance calculation
         function haversineMeters(lat1, lon1, lat2, lon2) {
@@ -275,8 +313,9 @@
                     }
                 }
 
-                // Add a camera position listener to adjust component heights
-                
+                // Hide UI after starting navigation
+                navControls.classList.add('hidden');
+                toggleUI.textContent = '☰';
             } catch (error) {
                 console.error('Navigation error:', error);
                 alert('Error calculating route. Please try again.');
