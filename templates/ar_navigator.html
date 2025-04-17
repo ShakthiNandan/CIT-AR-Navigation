@@ -62,7 +62,7 @@
         <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
 
-    <script>
+    <scripts>
         const sceneEl = document.querySelector('a-scene');
         let scenesList = [];
 
@@ -127,7 +127,96 @@
         }
 
         document.getElementById('goBtn').addEventListener('click', generateRoute);
-    </script>
+    </scripts>
+    <script>
+        const sceneEl   = document.querySelector('a-scene');
+        let scenesList  = [];
+      
+        // Load your scenes once
+        fetch('/scenes.json')
+          .then(r => r.json())
+          .then(arr => {
+            scenesList = arr;
+            arr.forEach((s,i) => {
+              const o1 = new Option(s.title, i);
+              const o2 = new Option(s.title, i);
+              fromSelect.append(o1);
+              toSelect.append(o2);
+            });
+          });
+      
+        // Compute bearing between two lat/lon points
+        function computeBearing(lat1, lon1, lat2, lon2) {
+          const toRad = Math.PI/180, toDeg = 180/Math.PI;
+          const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δλ = (lon2-lon1)*toRad;
+          const y = Math.sin(Δλ)*Math.cos(φ2);
+          const x = Math.cos(φ1)*Math.sin(φ2)
+                  - Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
+          return (Math.atan2(y, x)*toDeg + 360) % 360;
+        }
+      
+        // Clear any existing nav entities
+        function clearNav() {
+          document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
+        }
+      
+        // Main: fetch path, then place arrows & pins
+        async function generateRoute() {
+          clearNav();
+      
+          const fromIdx = fromSelect.value;
+          const toIdx   = toSelect.value;
+          const res     = await fetch(`/api/route?from=${fromIdx}&to=${toIdx}`);
+          const path    = await res.json();  // now an array of scene‐objects
+      
+          if (!Array.isArray(path) || path.length < 2) {
+            console.warn('No multi‐hop path returned:', path);
+            return;
+          }
+      
+          // place a pin at the **start**
+          const start = path[0];
+          const pin0  = document.createElement('a-entity');
+          pin0.setAttribute('gps-entity-place',
+            `latitude: ${start.latitude}; longitude: ${start.longitude};`);
+          pin0.setAttribute('obj-model','obj: #pinModel');
+          pin0.setAttribute('scale','2 2 2');           // smaller pin
+          pin0.classList.add('nav-pin');
+          sceneEl.appendChild(pin0);
+      
+          // for each segment, place an arrow at path[i] pointing to path[i+1]
+          for (let i = 0; i < path.length - 1; i++) {
+            const cur     = path[i];
+            const next    = path[i+1];
+            const bearing = computeBearing(
+                              cur.latitude, cur.longitude,
+                              next.latitude, next.longitude
+                            );
+      
+            const arrow = document.createElement('a-entity');
+            arrow.setAttribute('gps-entity-place',
+              `latitude: ${cur.latitude}; longitude: ${cur.longitude};`);
+            arrow.setAttribute('obj-model','obj: #arrowModel');
+            arrow.setAttribute('rotation', `0 ${bearing} 0`);
+            arrow.setAttribute('scale',    '1.5 1.5 1.5'); // smaller arrows
+            arrow.classList.add('nav-arrow');
+            sceneEl.appendChild(arrow);
+          }
+      
+          // place a pin at the **end**
+          const dest = path[path.length - 1];
+          const pin1 = document.createElement('a-entity');
+          pin1.setAttribute('gps-entity-place',
+            `latitude: ${dest.latitude}; longitude: ${dest.longitude};`);
+          pin1.setAttribute('obj-model','obj: #pinModel');
+          pin1.setAttribute('scale','2 2 2');
+          pin1.classList.add('nav-pin');
+          sceneEl.appendChild(pin1);
+        }
+      
+        goBtn.addEventListener('click', generateRoute);
+      </script>
+      
 </body>
 
 </html>
