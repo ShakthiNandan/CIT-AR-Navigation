@@ -183,8 +183,7 @@
             pin0.setAttribute('gps-entity-place',
                 `latitude: ${start.latitude}; longitude: ${start.longitude};`);
             pin0.setAttribute('obj-model', `obj: #pinModel;mtl:#pinModelMtl`);
-            pin0.setAttribute('scale', '2 2 2');           // smaller pin
-            pin0.setAttribute('position', '0 -1.2 0');
+            pin0.setAttribute('scale', '2 2 2');     
             pin0.classList.add('nav-pin');
             sceneEl.appendChild(pin0);
 
@@ -202,8 +201,7 @@
                     `latitude: ${cur.latitude}; longitude: ${cur.longitude};`);
                 arrow.setAttribute('obj-model', `obj: #arrowModel; mtl: #arrowModelMtl`);
                 arrow.setAttribute('rotation', `0 ${bearing} 0`);
-                arrow.setAttribute('scale', '1.5 1.5 1.5'); // smaller arrows
-                arrow.setAttribute('position', '0 -1.2 0');
+                arrow.setAttribute('scale', '1.5 1.5 1.5');
                 arrow.classList.add('nav-arrow');
                 sceneEl.appendChild(arrow);
             }
@@ -215,7 +213,6 @@
                 `latitude: ${dest.latitude}; longitude: ${dest.longitude};`);
             pin1.setAttribute('obj-model', `obj: #pinModel;mtl:#pinModelMtl`);
             pin1.setAttribute('scale', '2 2 2');
-            pin1.setAttribute('position', '0 -1.2 0');
             pin1.classList.add('nav-pin');
             sceneEl.appendChild(pin1);
         }
