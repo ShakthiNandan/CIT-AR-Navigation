@@ -107,6 +107,20 @@
                 width: 80%;
             }
         }
+
+
+        /* target the AR.js video & force it to cover the container */
+        .arjs-video,
+        #scene-container video {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+            /* or “contain” if you prefer letter‑boxing */
+            z-index: 0;
+        }
     </style>
 </head>
 
