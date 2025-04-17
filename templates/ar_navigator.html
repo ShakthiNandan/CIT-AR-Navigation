@@ -60,34 +60,38 @@
 
         <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
+
+    <!-- Loading Indicator -->
+    <div class="loading">Calculating route...</div>
     <script>
-      const sceneEl = document.querySelector('a-scene');
-      let scenesList = [];
+        const sceneEl = document.querySelector('a-scene');
+        let scenesList = [];
 
-      // 1) Load scenes.json and populate dropdowns
-      fetch('/scenes.json')
-          .then(r => r.json())
-          .then(arr => {
-              scenesList = arr;
-              arr.forEach((s, i) => {
-                  const o1 = new Option(s.title, i);
-                  const o2 = new Option(s.title, i);
-                  document.getElementById('fromSelect').append(o1);
-                  document.getElementById('toSelect').append(o2);
-              });
-          });
+        const loading = document.querySelector('.loading');
+        // 1) Load scenes.json and populate dropdowns
+        fetch('/scenes.json')
+            .then(r => r.json())
+            .then(arr => {
+                scenesList = arr;
+                arr.forEach((s, i) => {
+                    const o1 = new Option(s.title, i);
+                    const o2 = new Option(s.title, i);
+                    document.getElementById('fromSelect').append(o1);
+                    document.getElementById('toSelect').append(o2);
+                });
+            });
 
-      // 2) Bearing formula (to rotate arrow toward next point)
-      function computeBearing(lat1, lon1, lat2, lon2) {
-          const toRad = Math.PI / 180, toDeg = 180 / Math.PI;
-          const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
-          const Δλ = (lon2 - lon1) * toRad;
-          const y = Math.sin(Δλ) * Math.cos(φ2);
-          const x = Math.cos(φ1) * Math.sin(φ2) -
-              Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
-          return (Math.atan2(y, x) * toDeg + 360) % 360;
-      }
-      function clearNav() {
+        // 2) Bearing formula (to rotate arrow toward next point)
+        function computeBearing(lat1, lon1, lat2, lon2) {
+            const toRad = Math.PI / 180, toDeg = 180 / Math.PI;
+            const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
+            const Δλ = (lon2 - lon1) * toRad;
+            const y = Math.sin(Δλ) * Math.cos(φ2);
+            const x = Math.cos(φ1) * Math.sin(φ2) -
+                Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+            return (Math.atan2(y, x) * toDeg + 360) % 360;
+        }
+        function clearNav() {
             document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
         }
 
@@ -144,8 +148,8 @@
 
         // Event Listeners
         goBtn.addEventListener('click', startNavigation);
-  </script>
-      
+    </script>
+
 </body>
 
 </html>
