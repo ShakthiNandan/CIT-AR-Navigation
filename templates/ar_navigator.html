@@ -193,21 +193,45 @@
             clearNav();
 
             try {
-                // Fetch multi-hop path
+                // Fetch path from backend A* implementation
                 const res = await fetch(`/api/route?from=${fi}&to=${ti}`);
+                if (!res.ok) {
+                    throw new Error('Failed to fetch route');
+                }
                 const path = await res.json();
+                
                 if (!Array.isArray(path) || path.length < 2) {
                     throw new Error('Invalid route data');
                 }
 
                 // Compute total distance
                 let totalDist = 0;
+                console.log('Navigation Path (A* over KNN graph):');
+                console.log('----------------');
                 for (let i = 0; i < path.length - 1; i++) {
-                    totalDist += haversineMeters(
-                        path[i].latitude, path[i].longitude,
-                        path[i + 1].latitude, path[i + 1].longitude
+                    const currentPoint = path[i];
+                    const nextPoint = path[i + 1];
+                    const segmentDist = haversineMeters(
+                        currentPoint.latitude, currentPoint.longitude,
+                        nextPoint.latitude, nextPoint.longitude
                     );
+                    totalDist += segmentDist;
+                    
+                    console.log(`Point ${i + 1}:`);
+                    console.log(`  Location: ${currentPoint.title}`);
+                    console.log(`  Coordinates: (${currentPoint.latitude.toFixed(6)}, ${currentPoint.longitude.toFixed(6)})`);
+                    console.log(`  Distance to next point: ${segmentDist.toFixed(2)}m`);
+                    console.log('----------------');
                 }
+                
+                // Log final point
+                const finalPoint = path[path.length - 1];
+                console.log(`Final Point:`);
+                console.log(`  Location: ${finalPoint.title}`);
+                console.log(`  Coordinates: (${finalPoint.latitude.toFixed(6)}, ${finalPoint.longitude.toFixed(6)})`);
+                console.log(`Total Distance: ${totalDist.toFixed(2)}m`);
+                console.log('----------------');
+                
                 distance.innerText = `Distance: ${totalDist.toFixed(0)} m`;
 
                 // Place pins at endpoints
