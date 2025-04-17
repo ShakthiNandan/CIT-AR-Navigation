@@ -45,7 +45,10 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-            height: calc(100vh - 150px); /* Account for header and footer */
+            height: calc(100vh - 150px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #scene-container a-scene {
@@ -114,9 +117,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: auto !important;
+            height: 100% !important;
+            max-width: none !important;
+            object-fit: contain;
             z-index: 0;
             pointer-events: none;
         }
@@ -131,7 +135,7 @@
         <!-- 2) AR scene -->
         <div id="scene-container">
             <a-scene embedded vr-mode-ui="enabled: false"
-                arjs="sourceType: webcam; sourceWidth: 640; sourceHeight: 480;debugUIEnabled: false;"
+                arjs="sourceType: webcam; sourceWidth: 1104; sourceHeight: 1472; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
                 device-orientation-permission-ui="enabled: true">
                 <a-assets>
                     <a-asset-item id="arrowObj" src="/static/models/arrow.obj"></a-asset-item>
