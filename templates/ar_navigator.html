@@ -109,16 +109,15 @@
         }
 
 
-        /* target the AR.js video & force it to cover the container */
         .arjs-video,
         #scene-container video {
             position: absolute !important;
-            top: 0;
-            left: 0;
-            width: 100% !important;
+            top: 50%;
+            left: 50%;
+            width: auto !important;
             height: 100% !important;
+            transform: translate(-50%, -50%);
             object-fit: cover;
-            /* or “contain” if you prefer letter‑boxing */
             z-index: 0;
         }
     </style>
@@ -131,7 +130,8 @@
 
         <!-- 2) AR scene -->
         <div id="scene-container">
-            <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; sourceWidth: 640; sourceHeight: 480;debugUIEnabled: false;"
+            <a-scene embedded vr-mode-ui="enabled: false"
+                arjs="sourceType: webcam; sourceWidth: 640; sourceHeight: 480;debugUIEnabled: false;"
                 device-orientation-permission-ui="enabled: true">
                 <a-assets>
                     <a-asset-item id="arrowObj" src="/static/models/arrow.obj"></a-asset-item>
