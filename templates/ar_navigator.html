@@ -11,168 +11,254 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
 
     <style>
-        html,
-        body {
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --background-dark: rgba(17, 24, 39, 0.95);
+            --text-light: #f3f4f6;
+            --text-dark: #1f2937;
+            --border-radius: 12px;
+            --spacing: 16px;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
             height: 100%;
             overflow: hidden;
+            font-family: 'Inter', sans-serif;
         }
 
         .app {
             display: flex;
             flex-direction: column;
             height: 100vh;
-            /* full viewport height */
         }
 
+        /* Header Styles */
         header {
-            flex: 0 0 50px;
-            /* fixed 50px tall */
-            line-height: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            text-align: center;
-            font-size: 1.2em;
-            z-index: 10;
-        }
-
-        #scene-container {
-            flex: 1 1 auto;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: calc(100vh - 150px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #scene-container a-scene {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+            right: 0;
+            padding: var(--spacing);
+            z-index: 100;
+            pointer-events: none;
         }
 
-        footer {
-            flex: 0 0 100px;
-            /* fixed 100px tall */
-            background: rgba(0, 0, 0, 0.7);
+        .header-content {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            padding: 8px;
-            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--background-dark);
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(8px);
+            pointer-events: auto;
         }
 
-        footer select,
-        footer button {
-            font-size: 1em;
-            padding: 6px 12px;
-            border-radius: 6px;
-            border: none;
-            min-width: 100px;
+        .app-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-light);
         }
 
-        footer select {
-            background: #fff;
-            color: #000;
+        /* Navigation Controls */
+        .nav-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--spacing);
+            z-index: 100;
+            pointer-events: none;
         }
 
-        footer button {
-            background: #1e90ff;
-            color: #fff;
+        .controls-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr auto auto;
+            gap: var(--spacing);
+            align-items: center;
+            background: var(--background-dark);
+            padding: var(--spacing);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(8px);
+            pointer-events: auto;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 1rem;
+            appearance: none;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        footer #distance {
-            color: #fff;
+        select option {
+            background: var(--background-dark);
+            color: var(--text-light);
+            padding: 12px;
+        }
+
+        select:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .select-wrapper::after {
+            content: '▼';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            pointer-events: none;
+            font-size: 0.8rem;
+        }
+
+        button {
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            font-size: 1rem;
             font-weight: 500;
-            min-width: 120px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: var(--primary-hover);
+        }
+
+        #distance {
+            color: var(--text-light);
+            font-weight: 500;
             text-align: center;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            min-width: 150px;
         }
 
-        @media (max-width: 480px) {
-            footer {
-                flex-direction: column;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .controls-container {
+                grid-template-columns: 1fr;
             }
 
-            footer select,
-            footer button {
-                width: 80%;
+            .nav-controls {
+                padding: var(--spacing);
+            }
+
+            select, button, #distance {
+                width: 100%;
             }
         }
 
-        .arjs-video,
-        #scene-container video {
-            position: absolute !important;
+        /* Loading State */
+        .loading {
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: auto !important;
-            height: 100% !important;
-            max-width: none !important;
-            object-fit: contain;
-            z-index: 0;
-            pointer-events: none;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            z-index: 1000;
+            background: var(--background-dark);
+            padding: 20px 40px;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
         }
     </style>
 </head>
 
 <body>
     <div class="app">
-        <!-- 1) Header -->
-        <header>CIT AR Navigation</header>
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h1 class="app-title">CIT AR Navigation</h1>
+            </div>
+        </header>
 
-        <!-- 2) AR scene -->
-        <div id="scene-container">
-            <a-scene embedded vr-mode-ui="enabled: false"
-                arjs="sourceType: webcam; sourceWidth: 1104; sourceHeight: 1472; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
-                device-orientation-permission-ui="enabled: true">
-                <a-assets>
-                    <a-asset-item id="arrowObj" src="/static/models/arrow.obj"></a-asset-item>
-                    <a-asset-item id="arrowMtl" src="/static/models/arrow.mtl"></a-asset-item>
-                    <a-asset-item id="pinObj" src="/static/models/pin.obj"></a-asset-item>
-                    <a-asset-item id="pinMtl" src="/static/models/pin.mtl"></a-asset-item>
-                </a-assets>
+        <!-- AR Scene -->
+        <a-scene vr-mode-ui="enabled: false" embedded 
+            arjs="sourceType: webcam; sourceWidth: 3889; sourceHeight: 2917; debugUIEnabled: false;"
+            device-orientation-permission-ui="enabled: true">
+            <a-assets>
+                <a-asset-item id="arrowObj" src="/static/models/arrow.obj"></a-asset-item>
+                <a-asset-item id="arrowMtl" src="/static/models/arrow.mtl"></a-asset-item>
+                <a-asset-item id="pinObj" src="/static/models/pin.obj"></a-asset-item>
+                <a-asset-item id="pinMtl" src="/static/models/pin.mtl"></a-asset-item>
+            </a-assets>
 
-                <!-- GPS camera -->
-                <a-camera gps-camera rotation-reader></a-camera>
-            </a-scene>
+            <!-- GPS camera -->
+            <a-camera gps-camera rotation-reader></a-camera>
+        </a-scene>
+
+        <!-- Navigation Controls -->
+        <div class="nav-controls">
+            <div class="controls-container">
+                <div class="select-wrapper">
+                    <select id="fromSelect">
+                        <option value="">Select Starting Point</option>
+                    </select>
+                </div>
+                <div class="select-wrapper">
+                    <select id="toSelect">
+                        <option value="">Select Destination</option>
+                    </select>
+                </div>
+                <button id="goBtn">Start Navigation</button>
+                <div id="distance">Distance: — m</div>
+            </div>
         </div>
 
-        <!-- 3) Footer UI -->
-        <footer>
-            <select id="fromSelect">
-                <option value="">From</option>
-            </select>
-            <select id="toSelect">
-                <option value="">To</option>
-            </select>
-            <button id="goBtn">Go</button>
-            <div id="distance">Distance: — m</div>
-        </footer>
+        <!-- Loading Indicator -->
+        <div class="loading">Calculating route...</div>
     </div>
 
-    <script>document.addEventListener('DOMContentLoaded', () => {
-            const video = document.querySelector('.arjs-video');
-            const container = document.querySelector('#scene-container');
-            if (video && container) {
-                container.appendChild(video);
-            }
-        });
+    <script>
         const sceneEl = document.querySelector('a-scene');
         let scenesList = [];
+        const loading = document.querySelector('.loading');
 
-        // 1) load scenes.json
+        // Load scenes.json
         fetch('/scenes.json')
             .then(r => r.json())
             .then(arr => {
@@ -183,7 +269,7 @@
                 });
             });
 
-        // 2) haversine (meters)
+        // Haversine formula for distance calculation
         function haversineMeters(lat1, lon1, lat2, lon2) {
             const R = 6371000; // m
             const toRad = Math.PI / 180;
@@ -195,7 +281,7 @@
             return 2 * R * Math.asin(Math.sqrt(a));
         }
 
-        // 3) bearing
+        // Calculate bearing between two points
         function computeBearing(lat1, lon1, lat2, lon2) {
             const toRad = Math.PI / 180, toDeg = 180 / Math.PI;
             const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
@@ -206,73 +292,88 @@
             return (Math.atan2(y, x) * toDeg + 360) % 360;
         }
 
-        // 4) clear old nav
+        // Clear existing navigation elements
         function clearNav() {
             document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
         }
 
-        // 5) route + rendering
+        // Start navigation with loading state
         async function startNavigation() {
-            clearNav();
             const fi = +fromSelect.value, ti = +toSelect.value;
-            if (isNaN(fi) || isNaN(ti)) return;
-
-            // fetch multi-hop path
-            const res = await fetch(`/api/route?from=${fi}&to=${ti}`);
-            const path = await res.json();
-            if (!Array.isArray(path) || path.length < 2) return;
-
-            // compute total distance
-            let totalDist = 0;
-            for (let i = 0; i < path.length - 1; i++) {
-                totalDist += haversineMeters(
-                    path[i].latitude, path[i].longitude,
-                    path[i + 1].latitude, path[i + 1].longitude
-                );
+            if (isNaN(fi) || isNaN(ti)) {
+                alert('Please select both starting point and destination');
+                return;
             }
-            distance.innerText = `Distance: ${totalDist.toFixed(0)} m`;
 
-            // place pins at endpoints
-            [0, path.length - 1].forEach(idx => {
-                const n = path[idx];
-                const pin = document.createElement('a-entity');
-                pin.setAttribute('gps-entity-place',
-                    `latitude: ${n.latitude}; longitude: ${n.longitude};`);
-                pin.setAttribute('obj-model', 'obj: #pinObj; mtl: #pinMtl');
-                pin.setAttribute('position', '0 -1.2 0');
-                pin.setAttribute('scale', '1.8 1.8 1.8');
-                pin.classList.add('nav-pin');
-                sceneEl.appendChild(pin);
-            });
+            loading.classList.add('active');
+            clearNav();
 
-            // arrows every 5 m
-            const spacing = 15; // meters
-            for (let i = 0; i < path.length - 1; i++) {
-                const A = path[i], B = path[i + 1];
-                const segDist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
-                const steps = Math.max(1, Math.floor(segDist / spacing));
-                const bearing = computeBearing(
-                    A.latitude, A.longitude,
-                    B.latitude, B.longitude
-                );
-                for (let s = 0; s <= steps; s++) {
-                    const f = s / steps;
-                    const lat = A.latitude + (B.latitude - A.latitude) * f;
-                    const lon = A.longitude + (B.longitude - A.longitude) * f;
-                    const arrow = document.createElement('a-entity');
-                    arrow.setAttribute('gps-entity-place',
-                        `latitude: ${lat}; longitude: ${lon};`);
-                    arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
-                    arrow.setAttribute('rotation', `0 ${bearing} 0`);
-                    arrow.setAttribute('position', '0 -1.2 0');
-                    arrow.setAttribute('scale', '1.5 1.5 1.5');
-                    arrow.setAttribute('material', 'shader: flat; color: blue');
-                    arrow.classList.add('nav-arrow');
-                    sceneEl.appendChild(arrow);
+            try {
+                // Fetch multi-hop path
+                const res = await fetch(`/api/route?from=${fi}&to=${ti}`);
+                const path = await res.json();
+                if (!Array.isArray(path) || path.length < 2) {
+                    throw new Error('Invalid route data');
                 }
+
+                // Compute total distance
+                let totalDist = 0;
+                for (let i = 0; i < path.length - 1; i++) {
+                    totalDist += haversineMeters(
+                        path[i].latitude, path[i].longitude,
+                        path[i + 1].latitude, path[i + 1].longitude
+                    );
+                }
+                distance.innerText = `Distance: ${totalDist.toFixed(0)} m`;
+
+                // Place pins at endpoints
+                [0, path.length - 1].forEach(idx => {
+                    const n = path[idx];
+                    const pin = document.createElement('a-entity');
+                    pin.setAttribute('gps-entity-place',
+                        `latitude: ${n.latitude}; longitude: ${n.longitude};`);
+                    pin.setAttribute('obj-model', 'obj: #pinObj; mtl: #pinMtl');
+                    pin.setAttribute('position', '0 -1.2 0');
+                    pin.setAttribute('scale', '1.8 1.8 1.8');
+                    pin.classList.add('nav-pin');
+                    sceneEl.appendChild(pin);
+                });
+
+                // Place arrows along the path
+                const spacing = 15; // meters
+                for (let i = 0; i < path.length - 1; i++) {
+                    const A = path[i], B = path[i + 1];
+                    const segDist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
+                    const steps = Math.max(1, Math.floor(segDist / spacing));
+                    const bearing = computeBearing(
+                        A.latitude, A.longitude,
+                        B.latitude, B.longitude
+                    );
+                    for (let s = 0; s <= steps; s++) {
+                        const f = s / steps;
+                        const lat = A.latitude + (B.latitude - A.latitude) * f;
+                        const lon = A.longitude + (B.longitude - A.longitude) * f;
+                        const arrow = document.createElement('a-entity');
+                        arrow.setAttribute('gps-entity-place',
+                            `latitude: ${lat}; longitude: ${lon};`);
+                        arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
+                        arrow.setAttribute('rotation', `0 ${bearing} 0`);
+                        arrow.setAttribute('position', '0 -1.2 0');
+                        arrow.setAttribute('scale', '1.5 1.5 1.5');
+                        arrow.setAttribute('material', 'shader: flat; color: blue');
+                        arrow.classList.add('nav-arrow');
+                        sceneEl.appendChild(arrow);
+                    }
+                }
+            } catch (error) {
+                console.error('Navigation error:', error);
+                alert('Error calculating route. Please try again.');
+            } finally {
+                loading.classList.remove('active');
             }
         }
 
+        // Event Listeners
         goBtn.addEventListener('click', startNavigation);
     </script>
 </body>
