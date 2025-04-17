@@ -62,38 +62,41 @@
             color: #fff;
             font-weight: 500;
         }
+
         .ar-ui-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; /* Let AR scene still be interactive unless you override below */
-  }
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            /* Let AR scene still be interactive unless you override below */
+        }
 
-  .ar-ui-container * {
-    pointer-events: auto; /* Re-enable interaction for UI elements */
-  }
+        .ar-ui-container * {
+            pointer-events: auto;
+            /* Re-enable interaction for UI elements */
+        }
 
-  .ui-panel {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgba(255,255,255,0.9);
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 90vw;
-    max-height: 80vh;
-    overflow-y: auto;
-    font-size: 14px;
-  }
+        .ui-panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 90vw;
+            max-height: 80vh;
+            overflow-y: auto;
+            font-size: 14px;
+        }
 
-  @media (max-width: 600px) {
-    .ui-panel {
-      font-size: 12px;
-    }
-  }
+        @media (max-width: 600px) {
+            .ui-panel {
+                font-size: 12px;
+            }
+        }
     </style>
 
 </head>
@@ -116,26 +119,18 @@
 
     <div class="ar-ui-container">
         <div class="ui-panel">
-          <label for="from">From:</label>
-          <select id="fromSelect">...</select>
-          <br />
-          <label for="to">To:</label>
-          <select id="toSelect">...</select>
-          <br />
-          <button id="goBtn">Navigate</button>
+            <label for="from">From:
+                <select id="fromSelect">...</select>
+            </label>
+            <br />
+            <label for="to">To:
+                <select id="toSelect">...</select>
+                <br />
+            </label>
+            <button id="goBtn">Navigate</button>
         </div>
-      </div>
-    <!-- UI Overlay -->
-    <div id="ui" style="display:hidden">
-        <label>From:
-            <select id="fromSelect"></select>
-        </label>
-        →
-        <label>To:
-            <select id="toSelect"></select>
-        </label>
-        <button id="goBtn">Go</button>
     </div>
+    
     <script>
         const sceneEl = document.querySelector('a-scene');
         let scenesList = [];
