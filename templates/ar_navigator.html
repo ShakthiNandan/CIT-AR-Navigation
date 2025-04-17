@@ -217,8 +217,8 @@
                     pin.setAttribute('gps-entity-place',
                         `latitude: ${n.latitude}; longitude: ${n.longitude};`);
                     pin.setAttribute('obj-model', 'obj: #pinObj; mtl: #pinMtl');
-                    pin.setAttribute('position', '0 -1.2 0');
-                    pin.setAttribute('scale', '1.8 1.8 1.8');
+                    pin.setAttribute('position', '0 0 0');
+                    pin.setAttribute('scale', '2.5 2.5 2.5');
                     pin.classList.add('nav-pin');
                     sceneEl.appendChild(pin);
                 });
@@ -244,8 +244,8 @@
                             `latitude: ${lat}; longitude: ${lon};`);
                         arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
                         arrow.setAttribute('rotation', `0 ${bearing} 0`);
-                        arrow.setAttribute('position', '0 -1.2 0');
-                        arrow.setAttribute('scale', '1.5 1.5 1.5');
+                        arrow.setAttribute('position', '0 0 0');
+                        arrow.setAttribute('scale', '2.0 2.0 2.0');
                         arrow.classList.add('nav-arrow');
                         sceneEl.appendChild(arrow);
                     }
