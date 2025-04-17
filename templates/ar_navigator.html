@@ -2,224 +2,191 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>AR Navigator</title>
+  <meta charset="utf-8">
+  <title>AR Navigator</title>
 
-    <!-- A-Frame + AR.js -->
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <!-- in <head> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+  <!-- A-Frame + AR.js -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
 
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Roboto', sans-serif;
-        }
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Roboto', sans-serif;
+    }
 
-        #ui {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 12px 16px;
-            border-radius: 24px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
+    a-scene {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+    }
 
-        #ui select,
-        #ui button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: #fff;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: transform .1s ease, box-shadow .1s ease;
-        }
+    .ar-ui-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 10;
+      pointer-events: none;
+    }
 
-        #ui select:focus,
-        #ui button:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.4);
-        }
+    .ar-ui-container * {
+      pointer-events: auto;
+    }
 
-        #ui select:hover,
-        #ui button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
+    #ui {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 12px 16px;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 11;
+    }
 
-        #ui button {
-            background: #1e90ff;
-            color: #fff;
-            font-weight: 500;
-        }
+    #ui select,
+    #ui button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform .1s ease, box-shadow .1s ease;
+    }
 
-        .ar-ui-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            /* Let AR scene still be interactive unless you override below */
-        }
+    #ui select:focus,
+    #ui button:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.4);
+    }
 
-        .ar-ui-container * {
-            pointer-events: auto;
-            /* Re-enable interaction for UI elements */
-        }
+    #ui select:hover,
+    #ui button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
 
-        .ui-panel {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 8px;
-            max-width: 90vw;
-            max-height: 80vh;
-            overflow-y: auto;
-            font-size: 14px;
-        }
-
-        @media (max-width: 600px) {
-            .ui-panel {
-                font-size: 12px;
-            }
-        }
-    </style>
-
+    #ui button {
+      background: #1e90ff;
+      color: #fff;
+      font-weight: 500;
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- AR Scene -->
+  <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;" device-orientation-permission-ui="enabled: true">
+    <a-assets>
+      <a-asset-item id="arrowObj" src="/static/models/arrow.obj"></a-asset-item>
+      <a-asset-item id="arrowMtl" src="/static/models/arrow.mtl"></a-asset-item>
+      <a-asset-item id="pinObj" src="/static/models/pin.obj"></a-asset-item>
+      <a-asset-item id="pinMtl" src="/static/models/pin.mtl"></a-asset-item>
+    </a-assets>
 
-    <!-- AR Scene -->
-    <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;"
-        device-orientation-permission-ui="enabled: true">
-        <a-assets>
-            <a-asset-item id="arrowModel" src="/static/models/arrow.obj"></a-asset-item>
-            <a-asset-item id="arrowModelMtl" src="/static/models/arrow.mtl"></a-asset-item>
-            <a-asset-item id="pinModel" src="/static/models/pin.obj"></a-asset-item>
-            <a-asset-item id="pinModelMtl" src="/static/models/pin.mtl"></a-asset-item>
-        </a-assets>
+    <a-camera gps-camera rotation-reader></a-camera>
+  </a-scene>
 
-        <a-camera gps-camera rotation-reader></a-camera>
-    </a-scene>
-
-    <div class="ar-ui-container">
-        <div class="ui-panel">
-            <label for="from">From:
-                <select id="fromSelect">...</select>
-            </label>
-            <br />
-            <label for="to">To:
-                <select id="toSelect">...</select>
-                <br />
-            </label>
-            <button id="goBtn">Navigate</button>
-        </div>
+  <div class="ar-ui-container">
+    <div id="ui">
+      <label>From:
+        <select id="fromSelect"></select>
+      </label>
+      <label>To:
+        <select id="toSelect"></select>
+      </label>
+      <button id="goBtn">Navigate</button>
     </div>
-    
-    <script>
-        const sceneEl = document.querySelector('a-scene');
-        let scenesList = [];
+  </div>
 
-        // Load your scenes once
-        fetch('/scenes.json')
-            .then(r => r.json())
-            .then(arr => {
-                scenesList = arr;
-                arr.forEach((s, i) => {
-                    const o1 = new Option(s.title, i);
-                    const o2 = new Option(s.title, i);
-                    fromSelect.append(o1);
-                    toSelect.append(o2);
-                });
-            });
+  <script>
+    const sceneEl = document.querySelector('a-scene');
+    let scenesList = [];
 
-        // Compute bearing between two lat/lon points
-        function computeBearing(lat1, lon1, lat2, lon2) {
-            const toRad = Math.PI / 180, toDeg = 180 / Math.PI;
-            const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δλ = (lon2 - lon1) * toRad;
-            const y = Math.sin(Δλ) * Math.cos(φ2);
-            const x = Math.cos(φ1) * Math.sin(φ2)
-                - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
-            return (Math.atan2(y, x) * toDeg + 360) % 360;
+    // Load your scenes once
+    fetch('/scenes.json')
+      .then(r => r.json())
+      .then(arr => {
+        scenesList = arr;
+        arr.forEach((s, i) => {
+          fromSelect.append(new Option(s.title, i));
+          toSelect.append(new Option(s.title, i));
+        });
+      });
+
+    // Compute bearing between two lat/lon points
+    function computeBearing(lat1, lon1, lat2, lon2) {
+      const toRad = Math.PI / 180, toDeg = 180 / Math.PI;
+      const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δλ = (lon2 - lon1) * toRad;
+      const y = Math.sin(Δλ) * Math.cos(φ2);
+      const x = Math.cos(φ1) * Math.sin(φ2)
+              - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+      return (Math.atan2(y, x) * toDeg + 360) % 360;
+    }
+
+    function clearNav() {
+      document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
+    }
+
+    async function generateRoute() {
+      clearNav();
+
+      const fromIdx = fromSelect.value;
+      const toIdx = toSelect.value;
+      const res = await fetch(`/api/route?from=${fromIdx}&to=${toIdx}`);
+      const path = await res.json();
+      if (!Array.isArray(path) || path.length < 2) return;
+
+      // Place pins & arrows along the entire path
+      // Lower offset
+      const yOffset = -0.3;
+
+      path.forEach((node, idx) => {
+        // Pin at both start & end
+        if (idx === 0 || idx === path.length - 1) {
+          const pin = document.createElement('a-entity');
+          pin.setAttribute('gps-entity-place', `latitude: ${node.latitude}; longitude: ${node.longitude};`);
+          pin.setAttribute('obj-model', 'obj: #pinObj; mtl: #pinMtl');
+          pin.setAttribute('scale', '1.5 1.5 1.5');
+          pin.setAttribute('position', `0 ${yOffset} 0`);
+          pin.classList.add('nav-pin');
+          sceneEl.appendChild(pin);
         }
 
-        // Clear any existing nav entities
-        function clearNav() {
-            document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
+        // Arrow for every segment (except after last)
+        if (idx < path.length - 1) {
+          const next = path[idx + 1];
+          const bearing = computeBearing(node.latitude, node.longitude, next.latitude, next.longitude);
+          const arrow = document.createElement('a-entity');
+          arrow.setAttribute('gps-entity-place', `latitude: ${node.latitude}; longitude: ${node.longitude};`);
+          arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
+          arrow.setAttribute('rotation', `0 ${bearing} 0`);
+          arrow.setAttribute('scale', '1 1 1');
+          arrow.setAttribute('position', `0 ${yOffset} 0`);
+          arrow.setAttribute('material', 'color: blue');
+          arrow.classList.add('nav-arrow');
+          sceneEl.appendChild(arrow);
         }
+      });
+    }
 
-        // Main: fetch path, then place arrows & pins
-        async function generateRoute() {
-            clearNav();
-
-            const fromIdx = fromSelect.value;
-            const toIdx = toSelect.value;
-            const res = await fetch(`/api/route?from=${fromIdx}&to=${toIdx}`);
-            const path = await res.json();  // now an array of scene‐objects
-
-            if (!Array.isArray(path) || path.length < 2) {
-                console.warn('No multi‐hop path returned:', path);
-                return;
-            }
-
-            // place a pin at the **start**
-            const start = path[0];
-            const pin0 = document.createElement('a-entity');
-            pin0.setAttribute('gps-entity-place',
-                `latitude: ${start.latitude}; longitude: ${start.longitude};`);
-            pin0.setAttribute('obj-model', `obj: #pinModel;mtl:#pinModelMtl`);
-            pin0.setAttribute('scale', '2 2 2');     
-            pin0.classList.add('nav-pin');
-            sceneEl.appendChild(pin0);
-
-            // for each segment, place an arrow at path[i] pointing to path[i+1]
-            for (let i = 0; i < path.length - 1; i++) {
-                const cur = path[i];
-                const next = path[i + 1];
-                const bearing = computeBearing(
-                    cur.latitude, cur.longitude,
-                    next.latitude, next.longitude
-                );
-
-                const arrow = document.createElement('a-entity');
-                arrow.setAttribute('gps-entity-place',
-                    `latitude: ${cur.latitude}; longitude: ${cur.longitude};`);
-                arrow.setAttribute('obj-model', `obj: #arrowModel; mtl: #arrowModelMtl`);
-                arrow.setAttribute('rotation', `0 ${bearing} 0`);
-                arrow.setAttribute('scale', '1.5 1.5 1.5');
-                arrow.classList.add('nav-arrow');
-                sceneEl.appendChild(arrow);
-            }
-
-            // place a pin at the **end**
-            const dest = path[path.length - 1];
-            const pin1 = document.createElement('a-entity');
-            pin1.setAttribute('gps-entity-place',
-                `latitude: ${dest.latitude}; longitude: ${dest.longitude};`);
-            pin1.setAttribute('obj-model', `obj: #pinModel;mtl:#pinModelMtl`);
-            pin1.setAttribute('scale', '2 2 2');
-            pin1.classList.add('nav-pin');
-            sceneEl.appendChild(pin1);
-        }
-
-        goBtn.addEventListener('click', generateRoute);
-    </script>
-
+    goBtn.addEventListener('click', generateRoute);
+  </script>
 </body>
 
 </html>
