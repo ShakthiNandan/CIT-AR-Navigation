@@ -117,16 +117,16 @@
     <div class="ar-ui-container">
         <div class="ui-panel">
           <label for="from">From:</label>
-          <select id="from">...</select>
+          <select id="fromSelect">...</select>
           <br />
           <label for="to">To:</label>
-          <select id="to">...</select>
+          <select id="toSelect">...</select>
           <br />
-          <button onclick="startNavigation()">Navigate</button>
+          <button id="goBtn">Navigate</button>
         </div>
       </div>
     <!-- UI Overlay -->
-    <div id="ui" display="hidden">
+    <div id="ui" style="display:hidden">
         <label>From:
             <select id="fromSelect"></select>
         </label>
