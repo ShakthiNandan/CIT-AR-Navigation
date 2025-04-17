@@ -218,8 +218,17 @@
 
         <!-- AR Scene -->
         <a-scene vr-mode-ui="enabled: false" embedded 
-            arjs="sourceType: webcam; sourceWidth: 3889; sourceHeight: 2917; debugUIEnabled: false;"
-            device-orientation-permission-ui="enabled: true">
+            arjs="sourceType: webcam; 
+                  sourceWidth: 1280; 
+                  sourceHeight: 720; 
+                  debugUIEnabled: false;
+                  maxDetectionRate: 30;
+                  canvasWidth: 1280;
+                  canvasHeight: 720;
+                  imageSmoothingEnabled: false;"
+            device-orientation-permission-ui="enabled: true"
+            renderer="antialias: false; precision: mediump;"
+            loading-screen="enabled: false">
             <a-assets>
                 <a-asset-item id="arrowObj" src="/static/models/arrow.obj"></a-asset-item>
                 <a-asset-item id="arrowMtl" src="/static/models/arrow.mtl"></a-asset-item>
@@ -339,8 +348,8 @@
                     sceneEl.appendChild(pin);
                 });
 
-                // Place arrows along the path
-                const spacing = 15; // meters
+                // Place arrows along the path with optimized spacing
+                const spacing = 30; // Increased spacing to reduce number of arrows
                 for (let i = 0; i < path.length - 1; i++) {
                     const A = path[i], B = path[i + 1];
                     const segDist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
@@ -349,7 +358,9 @@
                         A.latitude, A.longitude,
                         B.latitude, B.longitude
                     );
-                    for (let s = 0; s <= steps; s++) {
+                    
+                    // Only place arrows at key points
+                    for (let s = 0; s <= steps; s += 2) {
                         const f = s / steps;
                         const lat = A.latitude + (B.latitude - A.latitude) * f;
                         const lon = A.longitude + (B.longitude - A.longitude) * f;
@@ -360,7 +371,6 @@
                         arrow.setAttribute('rotation', `0 ${bearing} 0`);
                         arrow.setAttribute('position', '0 -1.2 0');
                         arrow.setAttribute('scale', '1.5 1.5 1.5');
-                        arrow.setAttribute('material', 'shader: flat; color: blue');
                         arrow.classList.add('nav-arrow');
                         sceneEl.appendChild(arrow);
                     }
