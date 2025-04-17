@@ -109,7 +109,7 @@
         }
 
 
-        
+
 
         .arjs-video,
         #scene-container video {
@@ -121,6 +121,7 @@
             min-height: 100%;
             object-fit: cover;
             z-index: 0;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -160,7 +161,13 @@
         </footer>
     </div>
 
-    <script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('.arjs-video');
+            const container = document.querySelector('#scene-container');
+            if (video && container) {
+                container.appendChild(video);
+            }
+        });
         const sceneEl = document.querySelector('a-scene');
         let scenesList = [];
 
