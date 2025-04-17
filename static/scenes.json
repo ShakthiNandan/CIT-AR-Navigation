@@ -1,0 +1,187 @@
+[
+  {
+    "title": "Main Entrance Scene (0, 1)",
+    "latitude": 11.02910942261983,
+    "longitude": 77.02636489604187
+  },
+  {
+    "title": "Main Building Scene (1, 1)",
+    "latitude": 11.028779681473415,
+    "longitude": 77.02645912475805
+  },
+  {
+    "title": "Main Building Scene (2, 0)",
+    "latitude": 11.028474067397733,
+    "longitude": 77.02621740761636
+  },
+  {
+    "title": "Main Building Scene (2, 1)",
+    "latitude": 11.028562534662846,
+    "longitude": 77.02650009376487
+  },
+  {
+    "title": "Main Building Scene (2, 2)",
+    "latitude": 11.028618831999513,
+    "longitude": 77.0267090357007
+  },
+  {
+    "title": "Main Building Scene (2, 3)",
+    "latitude": 11.028687193036692,
+    "longitude": 77.02718837308296
+  },
+  {
+    "title": "Main Building Scene (2, 4)",
+    "latitude": 11.02873544787688,
+    "longitude": 77.02746696233075
+  },
+  {
+    "title": "Main Building Scene (2, 5)",
+    "latitude": 11.02877968147344,
+    "longitude": 77.02776193918137
+  },
+  {
+    "title": "Main Building Scene (2, 6)",
+    "latitude": 11.028823915064871,
+    "longitude": 77.02795449350302
+  },
+  {
+    "title": "Main Building Scene (3, 1)",
+    "latitude": 11.028337345209902,
+    "longitude": 77.0265533534626
+  },
+  {
+    "title": "CIT Sandwich Road Scene (3, 6)",
+    "latitude": 11.028626874476844,
+    "longitude": 77.02797497800653
+  },
+  {
+    "title": "Main Building Scene (4, 1)",
+    "latitude": 11.028071943131401,
+    "longitude": 77.02662300077455
+  },
+  {
+    "title": "CIT Sandwich Road Scene (4, 6)",
+    "latitude": 11.028353430176663,
+    "longitude": 77.02802414081496
+  },
+  {
+    "title": "Main Laboratories Scene (5, -1)",
+    "latitude": 11.027781109744357,
+    "longitude": 77.02611682230578
+  },
+  {
+    "title": "Main Laboratories Scene (5, 0)",
+    "latitude": 11.027854795798053,
+    "longitude": 77.02645093094503
+  },
+  {
+    "title": "Library Block Scene (5, 1)",
+    "latitude": 11.027903050774876,
+    "longitude": 77.02666806668228
+  },
+  {
+    "title": "Library Block Scene (5, 2)",
+    "latitude": 11.02796336948477,
+    "longitude": 77.02698352803641
+  },
+  {
+    "title": "Library Block Scene (5, 3)",
+    "latitude": 11.02804781565784,
+    "longitude": 77.02738092740461
+  },
+  {
+    "title": "Computing Block Scene (5, 4)",
+    "latitude": 11.028096070602986,
+    "longitude": 77.02763493524819
+  },
+  {
+    "title": "TLC Scene (5, 5)",
+    "latitude": 11.028120198072589,
+    "longitude": 77.02779471437562
+  },
+  {
+    "title": "Computing Block Scene (5, 6)",
+    "latitude": 11.028180516737931,
+    "longitude": 77.02804052841778
+  },
+  {
+    "title": "None Scene (6, 1)",
+    "latitude": 11.027750781790605,
+    "longitude": 77.0266841657989
+  },
+  {
+    "title": "Structural Engineering Lab Scene (7, -1)",
+    "latitude": 11.027369118969544,
+    "longitude": 77.02615332154187
+  },
+  {
+    "title": "IT Block Scene (7, 1)",
+    "latitude": 11.02755217891118,
+    "longitude": 77.02671175749204
+  },
+  {
+    "title": "IT Block Scene (8, 1)",
+    "latitude": 11.027362603310221,
+    "longitude": 77.02675774364727
+  },
+  {
+    "title": "College Canteen Scene (9, -1)",
+    "latitude": 11.027033102570064,
+    "longitude": 77.02622890286212
+  },
+  {
+    "title": "Vinayaka Temple Scene (9, 0)",
+    "latitude": 11.027100808231753,
+    "longitude": 77.02667496856785
+  },
+  {
+    "title": "CIT Boys Hostels Scene (9, 1)",
+    "latitude": 11.027132404201868,
+    "longitude": 77.0267853353404
+  },
+  {
+    "title": "Blue Shed Scene (9, 2)",
+    "latitude": 11.02716400016859,
+    "longitude": 77.02701526611656
+  },
+  {
+    "title": "Kabaddi Ground Scene (10, 1)",
+    "latitude": 11.026866229052022,
+    "longitude": 77.0268303696604
+  },
+  {
+    "title": "Basketball Court Scene (11, 1)",
+    "latitude": 11.025848546712945,
+    "longitude": 77.02701558144032
+  },
+  {
+    "title": "Palani Hostel Scene (12, 1)",
+    "latitude": 11.024886651651352,
+    "longitude": 77.02727605575842
+  },
+  {
+    "title": "Palani Hostel End Scene (12, 2)",
+    "latitude": 11.02496957670958,
+    "longitude": 77.02770185662008
+  },
+  {
+    "title": "B Mess Scene (12, 3)",
+    "latitude": 11.025163621254462,
+    "longitude": 77.02789110144747
+  },
+  {
+    "title": "Thirumalai Hostel Washing Area Scene (12, 4)",
+    "latitude": 11.025082067126059,
+    "longitude": 77.028156642079
+  },
+  {
+    "title": "Thirumalai Hostel Entrance Scene (12, 5)",
+    "latitude": 11.025259450737734,
+    "longitude": 77.02867417474292
+  },
+  {
+    "title": "Marudhamalai Hostel Entrance Scene (12, 6)",
+    "latitude": 11.025670552863472,
+    "longitude": 77.02928345861542
+  }
+]
