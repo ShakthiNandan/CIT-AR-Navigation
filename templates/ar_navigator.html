@@ -287,30 +287,65 @@
 
                 // Place arrows along the path with optimized spacing
                 const spacing = 30; // Increased spacing to reduce number of arrows
+                const arrows = []; // Store arrow positions for continuous flow
+                
                 for (let i = 0; i < path.length - 1; i++) {
                     const A = path[i], B = path[i + 1];
                     const segDist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
                     const steps = Math.max(1, Math.floor(segDist / spacing));
-                    const bearing = computeBearing(
-                        A.latitude, A.longitude,
-                        B.latitude, B.longitude
-                    );
-
-                    // Only place arrows at key points
+                    
+                    // Calculate positions for all arrows in this segment
                     for (let s = 0; s <= steps; s += 2) {
                         const f = s / steps;
                         const lat = A.latitude + (B.latitude - A.latitude) * f;
                         const lon = A.longitude + (B.longitude - A.longitude) * f;
-                        const arrow = document.createElement('a-entity');
-                        arrow.setAttribute('gps-entity-place',
-                            `latitude: ${lat}; longitude: ${lon};`);
-                        arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
-                        arrow.setAttribute('rotation', `0 ${bearing} 0`);
-                        arrow.setAttribute('position', '0 0 0');
-                        arrow.setAttribute('scale', '2.0 2.0 2.0');
-                        arrow.classList.add('nav-arrow');
-                        sceneEl.appendChild(arrow);
+                        arrows.push({ lat, lon });
                     }
+                }
+                
+                // Place arrows with continuous flow
+                for (let i = 0; i < arrows.length - 1; i++) {
+                    const currentArrow = arrows[i];
+                    const nextArrow = arrows[i + 1];
+                    
+                    const arrow = document.createElement('a-entity');
+                    arrow.setAttribute('gps-entity-place',
+                        `latitude: ${currentArrow.lat}; longitude: ${currentArrow.lon};`);
+                    arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
+                    
+                    // Calculate bearing to next arrow
+                    const bearing = computeBearing(
+                        currentArrow.lat, currentArrow.lon,
+                        nextArrow.lat, nextArrow.lon
+                    );
+                    
+                    arrow.setAttribute('rotation', `0 ${bearing} 0`);
+                    arrow.setAttribute('position', '0 0 0');
+                    arrow.setAttribute('scale', '2.0 2.0 2.0');
+                    arrow.classList.add('nav-arrow');
+                    sceneEl.appendChild(arrow);
+                }
+                
+                // Place final arrow pointing to destination
+                if (arrows.length > 0) {
+                    const lastArrow = arrows[arrows.length - 1];
+                    const finalPoint = path[path.length - 1];
+                    
+                    const finalArrow = document.createElement('a-entity');
+                    finalArrow.setAttribute('gps-entity-place',
+                        `latitude: ${lastArrow.lat}; longitude: ${lastArrow.lon};`);
+                    finalArrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
+                    
+                    const finalBearing = computeBearing(
+                        lastArrow.lat, lastArrow.lon,
+                        finalPoint.latitude, finalPoint.longitude
+                    );
+                    
+                    finalArrow.setAttribute('rotation', `0 ${finalBearing} 0`);
+                    finalArrow.setAttribute('position', '0 0 0');
+                    finalArrow.setAttribute('scale', '2.0 2.0 2.0');
+                    finalArrow.classList.add('nav-arrow');
+                    sceneEl.appendChild(finalArrow);
                 }
 
                 // Hide UI after starting navigation
