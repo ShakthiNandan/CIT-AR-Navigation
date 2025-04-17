@@ -220,6 +220,48 @@
         .loading.active {
             display: block;
         }
+
+        /* Modern UI styling while keeping the simple structure */
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(17, 24, 39, 0.95);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            z-index: 5;
+            backdrop-filter: blur(8px);
+            color: #f3f4f6;
+        }
+
+        select,
+        button {
+            margin: 0 4px;
+            font-size: 1em;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            color: #f3f4f6;
+        }
+
+        button {
+            background: #2563eb;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        select option {
+            background: #1f2937;
+            color: #f3f4f6;
+        }
     </style>
 </head>
 
@@ -231,6 +273,22 @@
                 <h1 class="app-title">CIT AR Navigation</h1>
             </div>
         </header>
+
+        <!-- UI Overlay -->
+        <div id="ui">
+            <label>From:
+                <select id="fromSelect">
+                    <option value="">Select Starting Point</option>
+                </select>
+            </label>
+            →
+            <label>To:
+                <select id="toSelect">
+                    <option value="">Select Destination</option>
+                </select>
+            </label>
+            <button id="goBtn">Go</button>
+        </div>
 
         <!-- AR Scene -->
         <a-scene vr-mode-ui="enabled: false" 
@@ -261,24 +319,6 @@
             </a-marker>
         </a-scene>
 
-        <!-- Navigation Controls -->
-        <div class="nav-controls">
-            <div class="controls-container">
-                <div class="select-wrapper">
-                    <select id="fromSelect">
-                        <option value="">Select Starting Point</option>
-                    </select>
-                </div>
-                <div class="select-wrapper">
-                    <select id="toSelect">
-                        <option value="">Select Destination</option>
-                    </select>
-                </div>
-                <button id="goBtn">Start Navigation</button>
-                <div id="distance">Distance: — m</div>
-            </div>
-        </div>
-
         <!-- Loading Indicator -->
         <div class="loading">Calculating route...</div>
     </div>
@@ -299,19 +339,7 @@
                 });
             });
 
-        // Haversine formula for distance calculation
-        function haversineMeters(lat1, lon1, lat2, lon2) {
-            const R = 6371000; // m
-            const toRad = Math.PI / 180;
-            const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
-            const Δφ = (lat2 - lat1) * toRad;
-            const Δλ = (lon2 - lon1) * toRad;
-            const a = Math.sin(Δφ / 2) ** 2 +
-                Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
-            return 2 * R * Math.asin(Math.sqrt(a));
-        }
-
-        // Calculate bearing between two points
+        // Bearing formula
         function computeBearing(lat1, lon1, lat2, lon2) {
             const toRad = Math.PI / 180, toDeg = 180 / Math.PI;
             const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
@@ -324,27 +352,10 @@
 
         // Clear existing navigation elements
         function clearNav() {
-            const entities = document.querySelectorAll('.nav-arrow, .nav-pin');
-            entities.forEach(entity => {
-                if (entity.object3D) {
-                    entity.object3D.traverse((object) => {
-                        if (object.geometry) {
-                            object.geometry.dispose();
-                        }
-                        if (object.material) {
-                            if (Array.isArray(object.material)) {
-                                object.material.forEach(material => material.dispose());
-                            } else {
-                                object.material.dispose();
-                            }
-                        }
-                    });
-                }
-                entity.parentNode.removeChild(entity);
-            });
+            document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
         }
 
-        // Start navigation with loading state
+        // Start navigation
         async function startNavigation() {
             const fi = +fromSelect.value, ti = +toSelect.value;
             if (isNaN(fi) || isNaN(ti)) {
@@ -356,69 +367,36 @@
             clearNav();
 
             try {
-                // Fetch multi-hop path
                 const res = await fetch(`/api/route?from=${fi}&to=${ti}`);
                 const path = await res.json();
                 if (!Array.isArray(path) || path.length < 2) {
                     throw new Error('Invalid route data');
                 }
 
-                // Compute total distance
-                let totalDist = 0;
-                for (let i = 0; i < path.length - 1; i++) {
-                    totalDist += haversineMeters(
-                        path[i].latitude, path[i].longitude,
-                        path[i + 1].latitude, path[i + 1].longitude
-                    );
-                }
-                distance.innerText = `Distance: ${totalDist.toFixed(0)} m`;
+                const start = path[0], end = path[1];
+                const bearing = computeBearing(
+                    start.latitude, start.longitude,
+                    end.latitude, end.longitude
+                );
 
-                // Create a document fragment for batch DOM updates
-                const fragment = document.createDocumentFragment();
+                // Place arrow at start
+                const arrow = document.createElement('a-entity');
+                arrow.setAttribute('gps-entity-place',
+                    `latitude: ${start.latitude}; longitude: ${start.longitude};`);
+                arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
+                arrow.setAttribute('rotation', `0 ${bearing} 0`);
+                arrow.setAttribute('scale', '5 5 5');
+                arrow.classList.add('nav-arrow');
+                sceneEl.appendChild(arrow);
 
-                // Place pins at endpoints
-                [0, path.length - 1].forEach(idx => {
-                    const n = path[idx];
-                    const pin = document.createElement('a-entity');
-                    pin.setAttribute('gps-entity-place',
-                        `latitude: ${n.latitude}; longitude: ${n.longitude};`);
-                    pin.setAttribute('obj-model', 'obj: #pinObj; mtl: #pinMtl');
-                    pin.setAttribute('position', '0 -0.5 0');
-                    pin.setAttribute('scale', '5 5 5');
-                    pin.classList.add('nav-pin');
-                    fragment.appendChild(pin);
-                });
-
-                // Place arrows along the path with optimized spacing
-                const spacing = 30; // Increased spacing to reduce number of arrows
-                for (let i = 0; i < path.length - 1; i++) {
-                    const A = path[i], B = path[i + 1];
-                    const segDist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
-                    const steps = Math.max(1, Math.floor(segDist / spacing));
-                    const bearing = computeBearing(
-                        A.latitude, A.longitude,
-                        B.latitude, B.longitude
-                    );
-                    
-                    // Only place arrows at key points
-                    for (let s = 0; s <= steps; s += 2) {
-                        const f = s / steps;
-                        const lat = A.latitude + (B.latitude - A.latitude) * f;
-                        const lon = A.longitude + (B.longitude - A.longitude) * f;
-                        const arrow = document.createElement('a-entity');
-                        arrow.setAttribute('gps-entity-place',
-                            `latitude: ${lat}; longitude: ${lon};`);
-                        arrow.setAttribute('obj-model', 'obj: #arrowObj; mtl: #arrowMtl');
-                        arrow.setAttribute('rotation', `0 ${bearing} 0`);
-                        arrow.setAttribute('position', '0 -0.5 0');
-                        arrow.setAttribute('scale', '5 5 5');
-                        arrow.classList.add('nav-arrow');
-                        fragment.appendChild(arrow);
-                    }
-                }
-
-                // Batch append all entities at once
-                sceneEl.appendChild(fragment);
+                // Place pin at destination
+                const pin = document.createElement('a-entity');
+                pin.setAttribute('gps-entity-place',
+                    `latitude: ${end.latitude}; longitude: ${end.longitude};`);
+                pin.setAttribute('obj-model', 'obj: #pinObj; mtl: #pinMtl');
+                pin.setAttribute('scale', '5 5 5');
+                pin.classList.add('nav-pin');
+                sceneEl.appendChild(pin);
 
             } catch (error) {
                 console.error('Navigation error:', error);
