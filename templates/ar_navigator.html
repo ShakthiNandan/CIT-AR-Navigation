@@ -276,17 +276,7 @@
                 }
 
                 // Add a camera position listener to adjust component heights
-                const camera = document.querySelector('[camera]');
-                camera.addEventListener('camera-position-changed', function() {
-                    const cameraPosition = camera.getAttribute('position');
-                    const heightOffset = -cameraPosition.y; // Get camera height
-                    
-                    // Adjust all navigation elements
-                    document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => {
-                        const currentPos = el.getAttribute('position');
-                        el.setAttribute('position', `${currentPos.x} ${heightOffset} ${currentPos.z}`);
-                    });
-                });
+                
             } catch (error) {
                 console.error('Navigation error:', error);
                 alert('Error calculating route. Please try again.');
