@@ -68,17 +68,6 @@
 
 <body>
 
-    <!-- UI Overlay -->
-    <div id="ui">
-        <label>From:
-            <select id="fromSelect"></select>
-        </label>
-        →
-        <label>To:
-            <select id="toSelect"></select>
-        </label>
-        <button id="goBtn">Go</button>
-    </div>
 
     <!-- AR Scene -->
     <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;"
@@ -94,6 +83,17 @@
     </a-scene>
 
 
+    <!-- UI Overlay -->
+    <div id="ui">
+        <label>From:
+            <select id="fromSelect"></select>
+        </label>
+        →
+        <label>To:
+            <select id="toSelect"></select>
+        </label>
+        <button id="goBtn">Go</button>
+    </div>
     <script>
         const sceneEl = document.querySelector('a-scene');
         let scenesList = [];
