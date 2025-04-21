@@ -6,7 +6,7 @@ app = Flask(__name__, static_folder='static')
 @app.route('/')
 def index():
     # your AR HTML (renamed to ar_navigator.html or routes.html)
-    return render_template('ar_navigator.html')
+    return render_template('index.html')
 
 # Serve the precomputed routes JSON at /destination_routes.json
 @app.route('/destination_routes.json')
