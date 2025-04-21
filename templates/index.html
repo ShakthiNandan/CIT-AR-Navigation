@@ -24,7 +24,6 @@
                  width:36px; height:36px; border-radius:50%;
                  font-size:20px; cursor:pointer;
                  box-shadow:0 2px 8px rgba(0,0,0,0.2); }
-    .hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -36,6 +35,9 @@
       <select id="fromSelect"><option value="">Select Start</option></select>
       <select id="toSelect"><option value="">Select End</option></select>
       <button id="goBtn">Start Navigation</button>
+      <label>Learned Path:</label>
+      <select id="pathSelect"><option value="">Select Learned Path</option></select>
+      <button id="showLearnedBtn">Show Learned Path</button>
       <div id="distance">Distance: — m</div>
     </div>
   </div>
@@ -52,190 +54,192 @@
     </a-assets>
     <a-camera gps-camera rotation-reader></a-camera>
   </a-scene>
-  <script>
-    (async () => {
-      const fromSelect     = document.getElementById('fromSelect');
-      const toSelect       = document.getElementById('toSelect');
-      const goBtn          = document.getElementById('goBtn');
-      const distanceEl     = document.getElementById('distance');
-      const toggleUI       = document.getElementById('toggleUI');
-      const navControls    = document.getElementById('navControls');
-      const sceneEl        = document.querySelector('a-scene');
-    
-      let combinedNodes = {}, nameToId = {}, routesData = {};
-    
-      // Toggle UI collapse
-      toggleUI.onclick = () => {
-        navControls.classList.toggle('hidden');
-        toggleUI.textContent = navControls.classList.contains('hidden') ? '☰' : '×';
-      };
-    
-      // Haversine distance in meters
-      function haversineMeters(lat1, lon1, lat2, lon2) {
-        const R = 6371000, toRad = Math.PI / 180;
-        const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
-        const dφ = (lat2 - lat1) * toRad, dλ = (lon2 - lon1) * toRad;
-        const a = Math.sin(dφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(dλ/2)**2;
-        return 2 * R * Math.asin(Math.sqrt(a));
+<script>
+(async () => {
+  const fromSelect     = document.getElementById('fromSelect');
+  const toSelect       = document.getElementById('toSelect');
+  const goBtn          = document.getElementById('goBtn');
+  const pathSelect     = document.getElementById('pathSelect');
+  const showLearnedBtn = document.getElementById('showLearnedBtn');
+  const distanceEl     = document.getElementById('distance');
+  const toggleUI       = document.getElementById('toggleUI');
+  const navControls    = document.getElementById('navControls');
+  const sceneEl        = document.querySelector('a-scene');
+
+  let combinedNodes = {}, nameToId = {}, routesData = {};
+
+  // Toggle UI collapse
+  toggleUI.onclick = () => {
+    navControls.classList.toggle('hidden');
+    toggleUI.textContent = navControls.classList.contains('hidden') ? '☰' : '×';
+  };
+
+  // Haversine distance in meters
+  function haversineMeters(lat1, lon1, lat2, lon2) {
+    const R = 6371000, toRad = Math.PI / 180;
+    const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
+    const dφ = (lat2 - lat1) * toRad, dλ = (lon2 - lon1) * toRad;
+    const a = Math.sin(dφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(dλ/2)**2;
+    return 2 * R * Math.asin(Math.sqrt(a));
+  }
+
+  // Compute bearing (degrees from north)
+  function computeBearing(lat1, lon1, lat2, lon2) {
+    const toRad = Math.PI/180, toDeg = 180/Math.PI;
+    const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δλ = (lon2 - lon1) * toRad;
+    const y = Math.sin(Δλ) * Math.cos(φ2);
+    const x = Math.cos(φ1)*Math.sin(φ2)
+            - Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
+    return (Math.atan2(y, x) * toDeg + 360) % 360;
+  }
+
+  // Clear existing AR entities
+  function clearNav() {
+    document.querySelectorAll('.nav-pin, .nav-arrow')
+            .forEach(el => el.remove());
+  }
+
+  // Place a pin or arrow
+  function placeEntity(lat, lon, model, cls, scale, rotation = '0 0 0') {
+    const ent = document.createElement('a-entity');
+    ent.setAttribute('gps-entity-place', `latitude:${lat}; longitude:${lon}`);
+    ent.setAttribute('obj-model', `obj:#${model}Obj; mtl:#${model}Mtl`);
+    ent.setAttribute('scale', scale);
+    ent.setAttribute('rotation', rotation);
+    ent.classList.add(cls);
+    sceneEl.appendChild(ent);
+  }
+
+  // Draw route with arrows every 5m, correctly oriented
+  function drawRoute(nodeIds) {
+    clearNav();
+    if (!Array.isArray(nodeIds) || nodeIds.length < 2) return;
+
+    // Build Lat/Lon path
+    const pathPts = nodeIds.map(id => {
+      const [lat, lon] = combinedNodes[id].coordinates;
+      return { latitude: lat, longitude: lon };
+    });
+
+    // Total distance
+    let totalDist = 0;
+    for (let i = 0; i < pathPts.length - 1; i++) {
+      totalDist += haversineMeters(
+        pathPts[i].latitude, pathPts[i].longitude,
+        pathPts[i + 1].latitude, pathPts[i + 1].longitude
+      );
+    }
+    distanceEl.innerText = `Distance: ${totalDist.toFixed(0)} m`;
+
+    // Place start/end pins
+    [pathPts[0], pathPts[pathPts.length - 1]].forEach(p =>
+      placeEntity(p.latitude, p.longitude, 'pin', 'nav-pin', '3 3 3')
+    );
+
+    // Generate all intermediate arrow coords every 5m
+    const arrowCoords = [];
+    for (let i = 0; i < pathPts.length - 1; i++) {
+      const A = pathPts[i], B = pathPts[i + 1];
+      const segDist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
+      const steps = Math.floor(segDist / 5);
+      for (let s = 1; s <= steps; s++) {
+        const frac = (s * 5) / segDist;
+        const lat = A.latitude + (B.latitude - A.latitude) * frac;
+        const lon = A.longitude + (B.longitude - A.longitude) * frac;
+        arrowCoords.push({ latitude: lat, longitude: lon });
       }
-    
-      // Compute bearing (degrees from north)
-      function computeBearing(lat1, lon1, lat2, lon2) {
-        const toRad = Math.PI/180, toDeg = 180/Math.PI;
-        const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δλ = (lon2 - lon1) * toRad;
-        const y = Math.sin(Δλ) * Math.cos(φ2);
-        const x = Math.cos(φ1)*Math.sin(φ2)
-                - Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
-        return (Math.atan2(y, x) * toDeg + 360) % 360;
+    }
+
+    // Place arrows pointing to the next coordinate (or final endpoint)
+    for (let i = 0; i < arrowCoords.length; i++) {
+      const cur = arrowCoords[i];
+      const nxt = (i < arrowCoords.length - 1)
+        ? arrowCoords[i + 1]
+        : pathPts[pathPts.length - 1];
+
+      // Calculate geospatial bearing
+      const bearing = computeBearing(
+        cur.latitude, cur.longitude,
+        nxt.latitude, nxt.longitude
+      );
+
+      // Offset by -90° so model’s +X axis aligns north
+      const yaw = (bearing - 90 + 360) % 360;
+
+      placeEntity(
+        cur.latitude, cur.longitude,
+        'arrow', 'nav-arrow', '2 2 2',
+        `0 ${yaw} 0`
+      );
+    }
+  }
+
+  // Populate Start/End dropdowns
+  function populateEndpoints() {
+    Object.entries(combinedNodes).forEach(([id, info]) => {
+      if (!info.name.startsWith('Node ')) {
+        fromSelect.append(new Option(info.name, info.name));
+        toSelect  .append(new Option(info.name, info.name));
       }
-    
-      // Clear existing AR entities
-      function clearNav() {
-        document.querySelectorAll('.nav-pin, .nav-arrow')
-                .forEach(el => el.remove());
+    });
+  }
+
+  // Populate Learned Paths dropdown
+  function populateLearned() {
+    const seen = new Set();
+    Object.keys(routesData).forEach(key => {
+      const [a, b] = key.split('–');
+      if (a < b && !seen.has(key)) {
+        pathSelect.append(new Option(`${a} → ${b}`, key));
+        seen.add(key);
       }
-    
-      // Place a pin or arrow
-      function placeEntity(lat, lon, model, cls, scale, rotation = '0 0 0') {
-        const ent = document.createElement('a-entity');
-        ent.setAttribute('gps-entity-place', `latitude:${lat}; longitude:${lon}`);
-        ent.setAttribute('obj-model', `obj:#${model}Obj; mtl:#${model}Mtl`);
-        ent.setAttribute('scale', scale);
-        ent.setAttribute('rotation', rotation);
-        ent.classList.add(cls);
-        sceneEl.appendChild(ent);
-      }
-    
-      // Draw route with arrows every 5m, correctly oriented
-      function drawRoute(nodeIds) {
-        clearNav();
-        if (!Array.isArray(nodeIds) || nodeIds.length < 2) return;
-    
-        // Build Lat/Lon path
-        const pathPts = nodeIds.map(id => {
-          const [lat, lon] = combinedNodes[id].coordinates;
-          return { latitude: lat, longitude: lon };
-        });
-    
-        // Total distance
-        let totalDist = 0;
-        for (let i = 0; i < pathPts.length - 1; i++) {
-          totalDist += haversineMeters(
-            pathPts[i].latitude, pathPts[i].longitude,
-            pathPts[i + 1].latitude, pathPts[i + 1].longitude
-          );
-        }
-        distanceEl.innerText = `Distance: ${totalDist.toFixed(0)} m`;
-    
-        // Place start/end pins
-        [pathPts[0], pathPts[pathPts.length - 1]].forEach(p =>
-          placeEntity(p.latitude, p.longitude, 'pin', 'nav-pin', '3 3 3')
-        );
-    
-        // Generate all intermediate arrow coords every 5m
-        const arrowCoords = [];
-        for (let i = 0; i < pathPts.length - 1; i++) {
-          const A = pathPts[i], B = pathPts[i + 1];
-          const segDist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
-          const steps = Math.floor(segDist / 5);
-          for (let s = 1; s <= steps; s++) {
-            const frac = (s * 5) / segDist;
-            const lat = A.latitude + (B.latitude - A.latitude) * frac;
-            const lon = A.longitude + (B.longitude - A.longitude) * frac;
-            arrowCoords.push({ latitude: lat, longitude: lon });
-          }
-        }
-    
-        // Place arrows pointing to the next coordinate (or final endpoint)
-        for (let i = 0; i < arrowCoords.length; i++) {
-          const cur = arrowCoords[i];
-          const nxt = (i < arrowCoords.length - 1)
-            ? arrowCoords[i + 1]
-            : pathPts[pathPts.length - 1];
-    
-          // Calculate geospatial bearing
-          const bearing = computeBearing(
-            cur.latitude, cur.longitude,
-            nxt.latitude, nxt.longitude
-          );
-    
-          // Offset by -90° so model’s +X axis aligns north
-          const yaw = (bearing - 90 + 360) % 360;
-    
-          placeEntity(
-            cur.latitude, cur.longitude,
-            'arrow', 'nav-arrow', '2 2 2',
-            `0 ${yaw} 0`
-          );
-        }
-      }
-    
-      // Populate Start/End dropdowns
-      function populateEndpoints() {
-        Object.entries(combinedNodes).forEach(([id, info]) => {
-          if (!info.name.startsWith('Node ')) {
-            fromSelect.append(new Option(info.name, info.name));
-            toSelect  .append(new Option(info.name, info.name));
-          }
-        });
-      }
-    
-      // Populate Learned Paths dropdown
-      function populateLearned() {
-        const seen = new Set();
-        Object.keys(routesData).forEach(key => {
-          const [a, b] = key.split('–');
-          if (a < b && !seen.has(key)) {
-            pathSelect.append(new Option(`${a} → ${b}`, key));
-            seen.add(key);
-          }
-        });
-      }
-    
-      // Load data and normalize
-      async function loadAll() {
-        combinedNodes = await (await fetch('/static/combined_nodes.json')).json();
-        Object.entries(combinedNodes).forEach(([id, info]) => {
-          nameToId[info.name] = id;
-        });
-    
-        const rawRoutes = await (await fetch('/static/destination_routes.json')).json();
-        Object.entries(rawRoutes).forEach(([key, arr]) => {
-          const normalized = arr.map(x =>
-            combinedNodes[x] ? x : (nameToId[x] || null)
-          ).filter(x => x);
-          routesData[key] = normalized;
-          const revKey = key.split('–').reverse().join('–');
-          routesData[revKey] = [...normalized].reverse();
-        });
-    
-        populateEndpoints();
-        populateLearned();
-      }
-    
-      // Start navigation / Show learned path handlers
-      goBtn.onclick = () => {
-        const f = fromSelect.value, t = toSelect.value;
-        if (!f || !t || f === t) return alert('Select two different endpoints.');
-        const key = `${f}–${t}`, rev = `${t}–${f}`;
-        const ids = routesData[key] || routesData[rev];
-        if (!ids) return alert('No path found.');
-        drawRoute(ids);
-        navControls.classList.add('hidden');
-        toggleUI.textContent = '☰';
-      };
-    
-      showLearnedBtn.onclick = () => {
-        const key = pathSelect.value;
-        if (!key) return alert('Select a learned path.');
-        drawRoute(routesData[key]);
-        navControls.classList.add('hidden');
-        toggleUI.textContent = '☰';
-      };
-    
-      await loadAll();
-    })();
-    </script>
-    
+    });
+  }
+
+  // Load data and normalize
+  async function loadAll() {
+    combinedNodes = await (await fetch('/static/combined_nodes.json')).json();
+    Object.entries(combinedNodes).forEach(([id, info]) => {
+      nameToId[info.name] = id;
+    });
+
+    const rawRoutes = await (await fetch('/static/destination_routes.json')).json();
+    Object.entries(rawRoutes).forEach(([key, arr]) => {
+      const normalized = arr.map(x =>
+        combinedNodes[x] ? x : (nameToId[x] || null)
+      ).filter(x => x);
+      routesData[key] = normalized;
+      const revKey = key.split('–').reverse().join('–');
+      routesData[revKey] = [...normalized].reverse();
+    });
+
+    populateEndpoints();
+    populateLearned();
+  }
+
+  // Start navigation / Show learned path handlers
+  goBtn.onclick = () => {
+    const f = fromSelect.value, t = toSelect.value;
+    if (!f || !t || f === t) return alert('Select two different endpoints.');
+    const key = `${f}–${t}`, rev = `${t}–${f}`;
+    const ids = routesData[key] || routesData[rev];
+    if (!ids) return alert('No path found.');
+    drawRoute(ids);
+    navControls.classList.add('hidden');
+    toggleUI.textContent = '☰';
+  };
+
+  showLearnedBtn.onclick = () => {
+    const key = pathSelect.value;
+    if (!key) return alert('Select a learned path.');
+    drawRoute(routesData[key]);
+    navControls.classList.add('hidden');
+    toggleUI.textContent = '☰';
+  };
+
+  await loadAll();
+})();
+</script>
+
 </body>
 </html>
