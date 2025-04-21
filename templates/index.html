@@ -116,7 +116,7 @@
       return { latitude: lat, longitude: lon };
     });
 
-    // Calculate total distance and show it
+    // Total distance
     let totalDist = 0;
     for (let i = 0; i < pathPts.length - 1; i++) {
       totalDist += haversineMeters(
@@ -131,22 +131,40 @@
       placeEntity(p.latitude, p.longitude, 'pin', 'nav-pin', '3 3 3')
     );
 
-    // Place arrows at each hop point except the last, pointing to next hop
+    // Generate all intermediate arrow coords every 5m
+    const arrowCoords = [];
     for (let i = 0; i < pathPts.length - 1; i++) {
-      const current = pathPts[i];
-      const next = pathPts[i + 1];
-      
-      // Calculate bearing to next point
+      const A = pathPts[i], B = pathPts[i + 1];
+      const segDist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
+      const steps = Math.floor(segDist / 5);
+      for (let s = 1; s <= steps; s++) {
+        const frac = (s * 5) / segDist;
+        const lat = A.latitude + (B.latitude - A.latitude) * frac;
+        const lon = A.longitude + (B.longitude - A.longitude) * frac;
+        arrowCoords.push({ latitude: lat, longitude: lon });
+      }
+    }
+
+    // Place arrows pointing to the next coordinate (or final endpoint)
+    for (let i = 0; i < arrowCoords.length; i++) {
+      const cur = arrowCoords[i];
+      const nxt = (i < arrowCoords.length - 1)
+        ? arrowCoords[i + 1]
+        : pathPts[pathPts.length - 1];
+
+      // Calculate geospatial bearing
       const bearing = computeBearing(
-        current.latitude, current.longitude,
-        next.latitude, next.longitude
+        cur.latitude, cur.longitude,
+        nxt.latitude, nxt.longitude
       );
 
-      // Place arrow at current point, oriented toward next point
+      // Offset by -90° so model’s +X axis aligns north
+      const yaw = (bearing - 90 + 360) % 360;
+
       placeEntity(
-        current.latitude, current.longitude,
+        cur.latitude, cur.longitude,
         'arrow', 'nav-arrow', '2 2 2',
-        `0 ${bearing} 0`  // Apply bearing directly as Y-rotation
+        `0 ${yaw} 0`
       );
     }
   }
