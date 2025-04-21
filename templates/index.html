@@ -79,8 +79,9 @@
     const navControls    = document.getElementById('navControls');
     const sceneEl        = document.querySelector('a-scene');
 
-    let combinedNodes = {};   // nodeID → { coordinates: [lat,lon], name }
-    let routesData    = {};   // "From–To" → [ nodeID, … ]
+    let combinedNodes = {};  // nodeID → { coordinates: [lat, lon], name }
+    let nameToId      = {};  // nodeName → nodeID
+    let routesData    = {};  // "From–To" → [ nodeID, … ]
 
     // Toggle UI collapse
     toggleUI.onclick = () => {
@@ -88,29 +89,29 @@
       toggleUI.textContent = navControls.classList.contains('hidden') ? '☰' : '×';
     };
 
-    // Haversine (m)
+    // Haversine (meters)
     function haversineMeters(lat1,lon1,lat2,lon2){
-      const R=6371000, toRad=Math.PI/180;
-      const φ1=lat1*toRad, φ2=lat2*toRad;
-      const dφ=(lat2-lat1)*toRad, dλ=(lon2-lon1)*toRad;
-      const a=Math.sin(dφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(dλ/2)**2;
-      return 2*R*Math.asin(Math.sqrt(a));
+      const R = 6371000, toRad = Math.PI/180;
+      const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
+      const dφ = (lat2 - lat1) * toRad, dλ = (lon2 - lon1) * toRad;
+      const a = Math.sin(dφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(dλ/2)**2;
+      return 2 * R * Math.asin(Math.sqrt(a));
     }
 
-    // Bearing (°)
+    // Bearing (degrees)
     function computeBearing(lat1,lon1,lat2,lon2){
-      const toRad=Math.PI/180, toDeg=180/Math.PI;
-      const φ1=lat1*toRad, φ2=lat2*toRad, Δλ=(lon2-lon1)*toRad;
-      const y=Math.sin(Δλ)*Math.cos(φ2);
-      const x=Math.cos(φ1)*Math.sin(φ2)
-              -Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
-      return (Math.atan2(y,x)*toDeg +360)%360;
+      const toRad = Math.PI/180, toDeg = 180/Math.PI;
+      const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δλ = (lon2 - lon1) * toRad;
+      const y = Math.sin(Δλ) * Math.cos(φ2);
+      const x = Math.cos(φ1)*Math.sin(φ2)
+              - Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
+      return (Math.atan2(y,x)*toDeg + 360) % 360;
     }
 
-    // Clear AR elements
+    // Clear AR nav elements
     function clearNav(){
       document.querySelectorAll('.nav-pin, .nav-arrow')
-              .forEach(el=>el.remove());
+              .forEach(el => el.remove());
     }
 
     // Place AR pin/arrow
@@ -124,20 +125,20 @@
       sceneEl.appendChild(ent);
     }
 
-    // Draw route from an array of nodeIDs
+    // Draw route from array of nodeIDs
     function drawRoute(nodeIds){
       clearNav();
-      if(!Array.isArray(nodeIds)||nodeIds.length<2) return;
+      if(!Array.isArray(nodeIds) || nodeIds.length < 2) return;
 
-      // Map to [lat,lon] objects:
+      // Map nodeIDs → {latitude, longitude}
       const path = nodeIds.map(id => {
-        const [lat,lon] = combinedNodes[id].coordinates;
+        const [lat, lon] = combinedNodes[id].coordinates;
         return { latitude: lat, longitude: lon };
       });
 
       // Compute total distance
       let total = 0;
-      for(let i=0;i<path.length-1;i++){
+      for(let i = 0; i < path.length - 1; i++){
         total += haversineMeters(
           path[i].latitude, path[i].longitude,
           path[i+1].latitude, path[i+1].longitude
@@ -145,31 +146,31 @@
       }
       distanceEl.innerText = `Distance: ${total.toFixed(0)} m`;
 
-      // Pins at endpoints
-      [0, path.length-1].forEach(i=>{
-        const p = path[i];
-        placeEntity(p.latitude,p.longitude,'pin','nav-pin','3 3 3');
+      // Place start/end pins
+      [0, path.length - 1].forEach(idx => {
+        const p = path[idx];
+        placeEntity(p.latitude, p.longitude, 'pin', 'nav-pin', '3 3 3');
       });
 
-      // Arrows at each hop pointing to next
-      for(let i=0;i<path.length-1;i++){
+      // Place arrows at each hop pointing to next
+      for(let i = 0; i < path.length - 1; i++){
         const A = path[i], B = path[i+1];
         const bearing = computeBearing(
           A.latitude, A.longitude,
           B.latitude, B.longitude
         );
         placeEntity(A.latitude, A.longitude,
-                    'arrow','nav-arrow','2 2 2',`0 ${bearing} 0`);
+                    'arrow', 'nav-arrow', '2 2 2', `0 ${bearing} 0`);
       }
     }
 
     // Populate Start/End dropdowns
     function populateEndpoints(){
-      Object.entries(combinedNodes).forEach(([id,info])=>{
+      Object.entries(combinedNodes).forEach(([id, info]) => {
         const nm = info.name;
-        if(!nm.startsWith('Node ')){
-          fromSelect.append(new Option(nm,nm));
-          toSelect  .append(new Option(nm,nm));
+        if(!nm.startsWith('Node ')){  // only true destinations
+          fromSelect.append(new Option(nm, nm));
+          toSelect  .append(new Option(nm, nm));
         }
       });
     }
@@ -178,8 +179,7 @@
     function populateLearned(){
       const seen = new Set();
       Object.keys(routesData).forEach(key => {
-        const [a,b] = key.split('–');
-        // only once
+        const [a, b] = key.split('–');
         if(a < b && !seen.has(key)){
           pathSelect.append(new Option(`${a} → ${b}`, key));
           seen.add(key);
@@ -187,38 +187,62 @@
       });
     }
 
-    // Load all JSON at startup
+    // Load and normalize data
     async function loadAll(){
+      // 1) combined_nodes.json
       combinedNodes = await (await fetch('/static/combined_nodes.json')).json();
-      routesData    = await (await fetch('/static/destination_routes.json')).json();
+
+      // Build name→ID map
+      Object.entries(combinedNodes).forEach(([id, info]) => {
+        nameToId[info.name] = id;
+      });
+
+      // 2) destination_routes.json
+      const rawRoutes = await (await fetch('/static/destination_routes.json')).json();
+      Object.entries(rawRoutes).forEach(([key, arr]) => {
+        // Normalize each entry (could be name or ID)
+        const norm = arr.map(x => {
+          return combinedNodes[x]
+            ? x
+            : nameToId[x] || null;
+        }).filter(x => x);
+        routesData[key] = norm;
+        // also reverse
+        const revKey = key.split('–').reverse().join('–');
+        routesData[revKey] = [...norm].reverse();
+      });
+
       populateEndpoints();
       populateLearned();
     }
 
-    // Start A* from dropdowns
-    goBtn.onclick = ()=>{
+    // Start Navigation (A* on the fly or learned?)
+    goBtn.onclick = () => {
       const f = fromSelect.value, t = toSelect.value;
       if(!f||!t||f===t) return alert('Select two different endpoints.');
-      const key    = `${f}–${t}`, rev = `${t}–${f}`;
-      const ids = routesData[key]||routesData[rev];
-      if(!ids) return alert('No A* path for that pair.');
+      // A* dynamic if you implement; else use precomputed:
+      const key    = `${f}–${t}`;
+      const revKey = `${t}–${f}`;
+      const ids = routesData[key] || routesData[revKey];
+      if(!ids) return alert('No path found.');
       drawRoute(ids);
       navControls.classList.add('hidden');
-      toggleUI.textContent='☰';
+      toggleUI.textContent = '☰';
     };
 
-    // Show precomputed path
-    showLearnedBtn.onclick = ()=>{
+    // Show Learned Path
+    showLearnedBtn.onclick = () => {
       const key = pathSelect.value;
-      if(!key) return alert('Select a learned path.');
       const ids = routesData[key];
+      if(!ids) return alert('Select a learned path.');
       drawRoute(ids);
       navControls.classList.add('hidden');
-      toggleUI.textContent='☰';
+      toggleUI.textContent = '☰';
     };
 
-    // Kickoff
+    // Initialize
     await loadAll();
+
   })();
   </script>
 </body>
