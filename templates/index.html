@@ -24,6 +24,7 @@
                  width:36px; height:36px; border-radius:50%;
                  font-size:20px; cursor:pointer;
                  box-shadow:0 2px 8px rgba(0,0,0,0.2); }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -35,9 +36,6 @@
       <select id="fromSelect"><option value="">Select Start</option></select>
       <select id="toSelect"><option value="">Select End</option></select>
       <button id="goBtn">Start Navigation</button>
-      <label>Learned Path:</label>
-      <select id="pathSelect"><option value="">Select Learned Path</option></select>
-      <button id="showLearnedBtn">Show Learned Path</button>
       <div id="distance">Distance: — m</div>
     </div>
   </div>
@@ -59,8 +57,6 @@
       const fromSelect     = document.getElementById('fromSelect');
       const toSelect       = document.getElementById('toSelect');
       const goBtn          = document.getElementById('goBtn');
-      const pathSelect     = document.getElementById('pathSelect');
-      const showLearnedBtn = document.getElementById('showLearnedBtn');
       const distanceEl     = document.getElementById('distance');
       const toggleUI       = document.getElementById('toggleUI');
       const navControls    = document.getElementById('navControls');
@@ -88,8 +84,7 @@
         const toRad = Math.PI/180, toDeg = 180/Math.PI;
         const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δλ = (lon2 - lon1) * toRad;
         const y = Math.sin(Δλ) * Math.cos(φ2);
-        const x = Math.cos(φ1)*Math.sin(φ2)
-                - Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
+        const x = Math.cos(φ1)*Math.sin(φ2) - Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
         return (Math.atan2(y, x) * toDeg + 360) % 360;
       }
     
@@ -106,6 +101,7 @@
         ent.setAttribute('obj-model', `obj:#${model}Obj; mtl:#${model}Mtl`);
         ent.setAttribute('scale', scale);
         ent.setAttribute('rotation', rotation);
+        ent.setAttribute('position', '0 0 0');
         ent.classList.add(cls);
         sceneEl.appendChild(ent);
       }
@@ -136,36 +132,55 @@
           placeEntity(p.latitude, p.longitude, 'pin', 'nav-pin', '3 3 3')
         );
     
-        // Generate all intermediate arrow coords every 5m
+        // Generate intermediate points with great circle interpolation
         const arrowCoords = [];
         for (let i = 0; i < pathPts.length - 1; i++) {
           const A = pathPts[i], B = pathPts[i + 1];
           const segDist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
           const steps = Math.floor(segDist / 5);
+          
           for (let s = 1; s <= steps; s++) {
             const frac = (s * 5) / segDist;
-            const lat = A.latitude + (B.latitude - A.latitude) * frac;
-            const lon = A.longitude + (B.longitude - A.longitude) * frac;
+            // Use great circle interpolation for more accurate point placement
+            const φ1 = A.latitude * Math.PI/180;
+            const λ1 = A.longitude * Math.PI/180;
+            const φ2 = B.latitude * Math.PI/180;
+            const λ2 = B.longitude * Math.PI/180;
+            
+            const d = 2 * Math.asin(Math.sqrt(
+              Math.sin((φ2 - φ1)/2)**2 + 
+              Math.cos(φ1) * Math.cos(φ2) * Math.sin((λ2 - λ1)/2)**2
+            ));
+            
+            const A_frac = Math.sin((1-frac)*d) / Math.sin(d);
+            const B_frac = Math.sin(frac*d) / Math.sin(d);
+            
+            const x = A_frac * Math.cos(φ1) * Math.cos(λ1) + B_frac * Math.cos(φ2) * Math.cos(λ2);
+            const y = A_frac * Math.cos(φ1) * Math.sin(λ1) + B_frac * Math.cos(φ2) * Math.sin(λ2);
+            const z = A_frac * Math.sin(φ1) + B_frac * Math.sin(φ2);
+            
+            const lat = Math.atan2(z, Math.sqrt(x*x + y*y)) * 180/Math.PI;
+            const lon = Math.atan2(y, x) * 180/Math.PI;
+            
             arrowCoords.push({ latitude: lat, longitude: lon });
           }
         }
     
-        // Place arrows pointing to the next coordinate (or final endpoint)
+        // Place arrows with correct orientation
         for (let i = 0; i < arrowCoords.length; i++) {
           const cur = arrowCoords[i];
           const nxt = (i < arrowCoords.length - 1)
             ? arrowCoords[i + 1]
             : pathPts[pathPts.length - 1];
     
-          // Calculate geospatial bearing
           const bearing = computeBearing(
             cur.latitude, cur.longitude,
             nxt.latitude, nxt.longitude
           );
     
-          // Offset by -90° so model’s +X axis aligns north
+          // Apply bearing as Y-rotation, model needs -90° offset to point forward
           const yaw = (bearing - 90 + 360) % 360;
-    
+          
           placeEntity(
             cur.latitude, cur.longitude,
             'arrow', 'nav-arrow', '2 2 2',
