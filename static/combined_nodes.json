@@ -1,0 +1,604 @@
+{
+  "N1": {
+    "coordinates": [
+      11.029199,
+      77.026359
+    ],
+    "name": "Node N1"
+  },
+  "N2": {
+    "coordinates": [
+      11.029041,
+      77.026439
+    ],
+    "name": "Main Gate"
+  },
+  "N3": {
+    "coordinates": [
+      11.028825,
+      77.026471
+    ],
+    "name": "Node N2"
+  },
+  "N4": {
+    "coordinates": [
+      11.02863,
+      77.026509
+    ],
+    "name": "Node N3"
+  },
+  "N5": {
+    "coordinates": [
+      11.028524,
+      77.026541
+    ],
+    "name": "Node N4"
+  },
+  "N6": {
+    "coordinates": [
+      11.028287,
+      77.026579
+    ],
+    "name": "Node N122212"
+  },
+  "N7": {
+    "coordinates": [
+      11.028113,
+      77.026622
+    ],
+    "name": "Chemical Lab & Workshop"
+  },
+  "N8": {
+    "coordinates": [
+      11.027845,
+      77.026654
+    ],
+    "name": "Node N8"
+  },
+  "N9": {
+    "coordinates": [
+      11.027813,
+      77.026434
+    ],
+    "name": "Node N9"
+  },
+  "N10": {
+    "coordinates": [
+      11.027776,
+      77.026246
+    ],
+    "name": "Node N10"
+  },
+  "N11": {
+    "coordinates": [
+      11.02776,
+      77.026117
+    ],
+    "name": "Node N11"
+  },
+  "N12": {
+    "coordinates": [
+      11.027718,
+      77.02594
+    ],
+    "name": "Dynamic Lab"
+  },
+  "N13": {
+    "coordinates": [
+      11.02766,
+      77.025629
+    ],
+    "name": "Welding Lab"
+  },
+  "N14": {
+    "coordinates": [
+      11.027587,
+      77.02615
+    ],
+    "name": "Node N14"
+  },
+  "N15": {
+    "coordinates": [
+      11.027429,
+      77.026176
+    ],
+    "name": "Structural Engineering Lab"
+  },
+  "N16": {
+    "coordinates": [
+      11.027255,
+      77.026198
+    ],
+    "name": "Node N16"
+  },
+  "N17": {
+    "coordinates": [
+      11.027034,
+      77.026262
+    ],
+    "name": "Node N17"
+  },
+  "N18": {
+    "coordinates": [
+      11.02676,
+      77.0263
+    ],
+    "name": "Canteen & Gym"
+  },
+  "N19": {
+    "coordinates": [
+      11.026438,
+      77.026353
+    ],
+    "name": "Ladies Hostel"
+  },
+  "N20": {
+    "coordinates": [
+      11.026076,
+      77.026412
+    ],
+    "name": "Volleyball Court"
+  },
+  "N21": {
+    "coordinates": [
+      11.025739,
+      77.026488
+    ],
+    "name": "Basketball Court"
+  },
+  "N22": {
+    "coordinates": [
+      11.025438,
+      77.026557
+    ],
+    "name": "Node N22"
+  },
+  "N23": {
+    "coordinates": [
+      11.025164,
+      77.026606
+    ],
+    "name": "Node N23"
+  },
+  "N24": {
+    "coordinates": [
+      11.024917,
+      77.026654
+    ],
+    "name": "Node N24"
+  },
+  "N25": {
+    "coordinates": [
+      11.024738,
+      77.026708
+    ],
+    "name": "Node N25"
+  },
+  "N26": {
+    "coordinates": [
+      11.024785,
+      77.026885
+    ],
+    "name": "Node N26"
+  },
+  "N27": {
+    "coordinates": [
+      11.024822,
+      77.027072
+    ],
+    "name": "Node N27"
+  },
+  "N28": {
+    "coordinates": [
+      11.024864,
+      77.02726
+    ],
+    "name": "Palani Hostel"
+  },
+  "N29": {
+    "coordinates": [
+      11.025022,
+      77.027233
+    ],
+    "name": "Node N29"
+  },
+  "N30": {
+    "coordinates": [
+      11.02518,
+      77.027185
+    ],
+    "name": "Node N30"
+  },
+  "N31": {
+    "coordinates": [
+      11.025443,
+      77.027137
+    ],
+    "name": "Node N31"
+  },
+  "N32": {
+    "coordinates": [
+      11.025528,
+      77.027099
+    ],
+    "name": "Node N32"
+  },
+  "N33": {
+    "coordinates": [
+      11.025839,
+      77.027024
+    ],
+    "name": "Handball Court"
+  },
+  "N34": {
+    "coordinates": [
+      11.026023,
+      77.026986
+    ],
+    "name": "Node N34"
+  },
+  "N35": {
+    "coordinates": [
+      11.026271,
+      77.026944
+    ],
+    "name": "Node N35"
+  },
+  "N36": {
+    "coordinates": [
+      11.026518,
+      77.026901
+    ],
+    "name": "Node N36"
+  },
+  "N37": {
+    "coordinates": [
+      11.026697,
+      77.026858
+    ],
+    "name": "Node N37"
+  },
+  "N38": {
+    "coordinates": [
+      11.026866,
+      77.02682
+    ],
+    "name": "Grounds"
+  },
+  "N39": {
+    "coordinates": [
+      11.027108,
+      77.026788
+    ],
+    "name": "Node N39"
+  },
+  "N40": {
+    "coordinates": [
+      11.027082,
+      77.026504
+    ],
+    "name": "Vinayaka Temple"
+  },
+  "N41": {
+    "coordinates": [
+      11.027071,
+      77.026386
+    ],
+    "name": "Node N41"
+  },
+  "N42": {
+    "coordinates": [
+      11.025459,
+      77.026611
+    ],
+    "name": "Node N42"
+  },
+  "N43": {
+    "coordinates": [
+      11.025486,
+      77.026809
+    ],
+    "name": "Node N43"
+  },
+  "N44": {
+    "coordinates": [
+      11.024938,
+      77.027689
+    ],
+    "name": "Node N44"
+  },
+  "N45": {
+    "coordinates": [
+      11.025117,
+      77.027872
+    ],
+    "name": "B Mess"
+  },
+  "N46": {
+    "coordinates": [
+      11.025064,
+      77.028161
+    ],
+    "name": "Node N46"
+  },
+  "N47": {
+    "coordinates": [
+      11.025122,
+      77.028435
+    ],
+    "name": "Node N47"
+  },
+  "N48": {
+    "coordinates": [
+      11.025206,
+      77.02866
+    ],
+    "name": "Thirumalai Hostel"
+  },
+  "N49": {
+    "coordinates": [
+      11.025243,
+      77.028928
+    ],
+    "name": "Node N49"
+  },
+  "N50": {
+    "coordinates": [
+      11.025333,
+      77.029122
+    ],
+    "name": "Node N50"
+  },
+  "N51": {
+    "coordinates": [
+      11.025538,
+      77.02925
+    ],
+    "name": "Marudhamalai Hostel"
+  },
+  "N52": {
+    "coordinates": [
+      11.025744,
+      77.029304
+    ],
+    "name": "Node N52"
+  },
+  "N53": {
+    "coordinates": [
+      11.02596,
+      77.029277
+    ],
+    "name": "Kailash Hostel"
+  },
+  "N54": {
+    "coordinates": [
+      11.025907,
+      77.028966
+    ],
+    "name": "Vellaingiri Hostel"
+  },
+  "N55": {
+    "coordinates": [
+      11.02586,
+      77.028746
+    ],
+    "name": "Node N55"
+  },
+  "N56": {
+    "coordinates": [
+      11.025818,
+      77.028521
+    ],
+    "name": "Node N56"
+  },
+  "N57": {
+    "coordinates": [
+      11.025675,
+      77.028537
+    ],
+    "name": "Node N57"
+  },
+  "N58": {
+    "coordinates": [
+      11.025507,
+      77.028585
+    ],
+    "name": "Node N58"
+  },
+  "N59": {
+    "coordinates": [
+      11.025343,
+      77.028628
+    ],
+    "name": "Node N59"
+  },
+  "N60": {
+    "coordinates": [
+      11.025654,
+      77.027764
+    ],
+    "name": "Node N60"
+  },
+  "N61": {
+    "coordinates": [
+      11.025575,
+      77.027126
+    ],
+    "name": "Node N61"
+  },
+  "N62": {
+    "coordinates": [
+      11.027546,
+      77.026708
+    ],
+    "name": "IT Block"
+  },
+  "N63": {
+    "coordinates": [
+      11.027909,
+      77.026965
+    ],
+    "name": "Library"
+  },
+  "N64": {
+    "coordinates": [
+      11.027962,
+      77.027351
+    ],
+    "name": "Computing Block"
+  },
+  "N65": {
+    "coordinates": [
+      11.028017,
+      77.027743
+    ],
+    "name": "TLC"
+  },
+  "N66": {
+    "coordinates": [
+      11.028067,
+      77.028092
+    ],
+    "name": "Node N66"
+  },
+  "N67": {
+    "coordinates": [
+      11.028256,
+      77.02807
+    ],
+    "name": "Polytechnic Block"
+  },
+  "N68": {
+    "coordinates": [
+      11.028509,
+      77.028016
+    ],
+    "name": "Node N68"
+  },
+  "N69": {
+    "coordinates": [
+      11.028841,
+      77.027936
+    ],
+    "name": "OAT"
+  },
+  "N70": {
+    "coordinates": [
+      11.028793,
+      77.027705
+    ],
+    "name": "Node N6"
+  },
+  "N71": {
+    "coordinates": [
+      11.02872,
+      77.027383
+    ],
+    "name": "Node N6"
+  },
+  "N72": {
+    "coordinates": [
+      11.028685,
+      77.027204
+    ],
+    "name": "CIT Auditorium"
+  },
+  "N73": {
+    "coordinates": [
+      11.028643,
+      77.026978
+    ],
+    "name": "Main Building"
+  },
+  "N74": {
+    "coordinates": [
+      11.028559,
+      77.026614
+    ],
+    "name": "Node N5"
+  },
+  "N75": {
+    "coordinates": [
+      11.027909,
+      77.028116
+    ],
+    "name": "Node N75"
+  },
+  "N76": {
+    "coordinates": [
+      11.027711,
+      77.028172
+    ],
+    "name": "New Computing Block"
+  },
+  "N77": {
+    "coordinates": [
+      11.027453,
+      77.028226
+    ],
+    "name": "Node N77"
+  },
+  "N78": {
+    "coordinates": [
+      11.027364,
+      77.028094
+    ],
+    "name": "Node N78"
+  },
+  "N79": {
+    "coordinates": [
+      11.027332,
+      77.027858
+    ],
+    "name": "Node N79"
+  },
+  "N80": {
+    "coordinates": [
+      11.027295,
+      77.027614
+    ],
+    "name": "Node N80"
+  },
+  "N81": {
+    "coordinates": [
+      11.027216,
+      77.027231
+    ],
+    "name": "Node N81"
+  },
+  "N82": {
+    "coordinates": [
+      11.027185,
+      77.02704
+    ],
+    "name": "Blue Shed"
+  },
+  "N83": {
+    "coordinates": [
+      11.025759,
+      77.028204
+    ],
+    "name": "Node N83"
+  },
+  "N84": {
+    "coordinates": [
+      11.026223,
+      77.028451
+    ],
+    "name": "Node N84"
+  },
+  "N85": {
+    "coordinates": [
+      11.026607,
+      77.02836
+    ],
+    "name": "Node N85"
+  },
+  "N86": {
+    "coordinates": [
+      11.026881,
+      77.02829
+    ],
+    "name": "Node N86"
+  }
+}
