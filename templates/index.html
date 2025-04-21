@@ -35,9 +35,6 @@
       <select id="fromSelect"><option value="">Select Start</option></select>
       <select id="toSelect"><option value="">Select End</option></select>
       <button id="goBtn">Start Navigation</button>
-      <label>Learned Path:</label>
-      <select id="pathSelect"><option value="">Select Learned Path</option></select>
-      <button id="showLearnedBtn">Show Learned Path</button>
       <div id="distance">Distance: — m</div>
     </div>
   </div>
@@ -59,8 +56,6 @@
   const fromSelect     = document.getElementById('fromSelect');
   const toSelect       = document.getElementById('toSelect');
   const goBtn          = document.getElementById('goBtn');
-  const pathSelect     = document.getElementById('pathSelect');
-  const showLearnedBtn = document.getElementById('showLearnedBtn');
   const distanceEl     = document.getElementById('distance');
   const toggleUI       = document.getElementById('toggleUI');
   const navControls    = document.getElementById('navControls');
@@ -184,18 +179,6 @@
     });
   }
 
-  // Populate Learned Paths dropdown
-  function populateLearned() {
-    const seen = new Set();
-    Object.keys(routesData).forEach(key => {
-      const [a, b] = key.split('–');
-      if (a < b && !seen.has(key)) {
-        pathSelect.append(new Option(`${a} → ${b}`, key));
-        seen.add(key);
-      }
-    });
-  }
-
   // Load data and normalize
   async function loadAll() {
     combinedNodes = await (await fetch('/static/combined_nodes.json')).json();
@@ -214,10 +197,9 @@
     });
 
     populateEndpoints();
-    populateLearned();
   }
 
-  // Start navigation / Show learned path handlers
+  // Start navigation handler
   goBtn.onclick = () => {
     const f = fromSelect.value, t = toSelect.value;
     if (!f || !t || f === t) return alert('Select two different endpoints.');
@@ -225,14 +207,6 @@
     const ids = routesData[key] || routesData[rev];
     if (!ids) return alert('No path found.');
     drawRoute(ids);
-    navControls.classList.add('hidden');
-    toggleUI.textContent = '☰';
-  };
-
-  showLearnedBtn.onclick = () => {
-    const key = pathSelect.value;
-    if (!key) return alert('Select a learned path.');
-    drawRoute(routesData[key]);
     navControls.classList.add('hidden');
     toggleUI.textContent = '☰';
   };
