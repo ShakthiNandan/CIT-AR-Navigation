@@ -1,181 +1,203 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>AR Navigator</title>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; }
-        .nav-controls {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            z-index: 100; width: 90%; max-width: 500px;
-        }
-        .controls-container {
-            background: rgba(255,255,255,0.95); padding: 20px; border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        select, button {
-            width: 100%; padding: 12px; margin-bottom: 10px;
-            border-radius: 8px; font-size: 16px;
-        }
-        select { border: 2px solid #e0e0e0; background-color: white; color: #333; }
-        select:focus { border-color: #2196F3; outline: none; }
-        button {
-            background-color: #2196F3; color: white; border: none;
-            font-weight: 600; cursor: pointer;
-        }
-        button:hover { background-color: #1976D2; }
-        #distance { margin-top: 15px; text-align: center; color: #333; font-weight: 500; }
-        .toggle-ui {
-            position: fixed; top: 20px; right: 20px; z-index: 101;
-            background: rgba(255,255,255,0.95); border: none; border-radius: 50%;
-            width: 40px; height: 40px; font-size: 20px; cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-    </style>
+  <meta charset="utf-8">
+  <title>AR Navigator</title>
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script 
+    src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js">
+  </script>
+  <style>
+    body { margin:0; overflow:hidden; font-family:Segoe UI,sans-serif; }
+    .nav-controls {
+      position:fixed; top:20px; left:50%; transform:translateX(-50%);
+      z-index:100; width:90%; max-width:400px;
+    }
+    .controls-container {
+      background:rgba(255,255,255,0.9);
+      padding:15px; border-radius:10px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    }
+    select, button {
+      width:100%; padding:10px; margin-bottom:8px;
+      font-size:16px; border-radius:6px;
+    }
+    select { border:2px solid #ccc; }
+    button {
+      background:#2196F3; color:white; border:none;
+      cursor:pointer;
+    }
+    button:hover { background:#1976D2; }
+    #distance { text-align:center; font-weight:500; }
+    .toggle-ui {
+      position:fixed; top:20px; right:20px; z-index:101;
+      background:rgba(255,255,255,0.9); border:none;
+      width:36px; height:36px; border-radius:50%;
+      font-size:20px; cursor:pointer;
+      box-shadow:0 2px 8px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 <body>
 
-<!-- Toggle UI -->
-<button class="toggle-ui" id="toggleUI">☰</button>
+  <!-- Toggle UI -->
+  <button class="toggle-ui" id="toggleUI">☰</button>
 
-<!-- Navigation Controls -->
-<div class="nav-controls" id="navControls">
+  <!-- Navigation Controls -->
+  <div class="nav-controls" id="navControls">
     <div class="controls-container">
-        <select id="fromSelect"><option value="">Select Starting Point</option></select>
-        <select id="toSelect"><option value="">Select Destination</option></select>
-        <button id="goBtn">Start Navigation</button>
-        <div id="distance">Distance: — m</div>
+      <select id="fromSelect">
+        <option value="">Select Start</option>
+      </select>
+      <select id="toSelect">
+        <option value="">Select End</option>
+      </select>
+      <button id="goBtn">Start Navigation</button>
+      <div id="distance">Distance: — m</div>
     </div>
-</div>
+  </div>
 
-<!-- AR Scene -->
-<a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;" device-orientation-permission-ui="enabled: true">
+  <!-- AR Scene -->
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;"
+           vr-mode-ui="enabled: false"
+           device-orientation-permission-ui="enabled: true">
     <a-assets>
-        <a-asset-item id="arrowObj" src="/static/models/arrow.obj"></a-asset-item>
-        <a-asset-item id="arrowMtl" src="/static/models/arrow.mtl"></a-asset-item>
-        <a-asset-item id="pinObj" src="/static/models/pin.obj"></a-asset-item>
-        <a-asset-item id="pinMtl" src="/static/models/pin.mtl"></a-asset-item>
+      <a-asset-item id="arrowObj" src="/static/models/arrow.obj"></a-asset-item>
+      <a-asset-item id="arrowMtl" src="/static/models/arrow.mtl"></a-asset-item>
+      <a-asset-item id="pinObj"   src="/static/models/pin.obj"></a-asset-item>
+      <a-asset-item id="pinMtl"   src="/static/models/pin.mtl"></a-asset-item>
     </a-assets>
     <a-camera gps-camera rotation-reader></a-camera>
-</a-scene>
+  </a-scene>
 
-<script>
-    const sceneEl = document.querySelector('a-scene');
+  <script>
+  (() => {
     const fromSelect = document.getElementById('fromSelect');
-    const toSelect = document.getElementById('toSelect');
+    const toSelect   = document.getElementById('toSelect');
+    const goBtn      = document.getElementById('goBtn');
     const distanceEl = document.getElementById('distance');
-    const toggleUI = document.getElementById('toggleUI');
-    const navControls = document.getElementById('navControls');
-    let routesData = {};
+    const toggleUI   = document.getElementById('toggleUI');
+    const navControls= document.getElementById('navControls');
+    const sceneEl    = document.querySelector('a-scene');
+
+    let destinations = [];
+    let routesData   = {};
 
     toggleUI.onclick = () => {
-        navControls.classList.toggle('hidden');
-        toggleUI.textContent = navControls.classList.contains('hidden') ? '☰' : '×';
+      navControls.classList.toggle('hidden');
+      toggleUI.textContent = navControls.classList.contains('hidden') ? '☰' : '×';
     };
 
-    function haversineMeters(lat1, lon1, lat2, lon2) {
-        const R = 6371000, toRad = Math.PI / 180;
-        const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δφ = (lat2 - lat1) * toRad, Δλ = (lon2 - lon1) * toRad;
-        const a = Math.sin(Δφ / 2) ** 2 + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
-        return 2 * R * Math.asin(Math.sqrt(a));
+    // Haversine (m)
+    function haversineMeters(lat1,lon1,lat2,lon2){
+      const R=6371000, toRad=Math.PI/180;
+      const φ1=lat1*toRad, φ2=lat2*toRad;
+      const dφ=(lat2-lat1)*toRad, dλ=(lon2-lon1)*toRad;
+      const a=Math.sin(dφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(dλ/2)**2;
+      return 2*R*Math.asin(Math.sqrt(a));
     }
 
-    function computeBearing(lat1, lon1, lat2, lon2) {
-        const toRad = Math.PI / 180, toDeg = 180 / Math.PI;
-        const φ1 = lat1 * toRad, φ2 = lat2 * toRad, Δλ = (lon2 - lon1) * toRad;
-        const y = Math.sin(Δλ) * Math.cos(φ2);
-        const x = Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
-        return (Math.atan2(y, x) * toDeg + 360) % 360;
+    // Bearing (deg)
+    function computeBearing(lat1,lon1,lat2,lon2){
+      const toRad=Math.PI/180,toDeg=180/Math.PI;
+      const φ1=lat1*toRad,φ2=lat2*toRad,Δλ=(lon2-lon1)*toRad;
+      const y=Math.sin(Δλ)*Math.cos(φ2);
+      const x=Math.cos(φ1)*Math.sin(φ2)
+              -Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
+      return (Math.atan2(y,x)*toDeg+360)%360;
     }
 
-    function clearNav() {
-        document.querySelectorAll('.nav-arrow, .nav-pin').forEach(el => el.remove());
+    // Clear AR pins/arrows
+    function clearNav(){
+      document.querySelectorAll('.nav-pin, .nav-arrow')
+              .forEach(el=>el.remove());
     }
 
-    function populateSelects() {
-    const destinations = [
-        "Main Gate", "Chemical Lab & Workshop", "Dynamic Lab", "Welding Lab", "Structural Engineering Lab",
-        "Canteen & Gym", "Ladies Hostel", "Volleyball Court", "Basketball Court", "Palani Hostel",
-        "Handball Court", "Grounds", "Vinayaka Temple", "B Mess", "Thirumalai Hostel",
-        "Marudhamalai Hostel", "Kailash Hostel", "Vellaingiri Hostel", "IT Block", "Library",
-        "Computing Block", "TLC", "Polytechnic Block", "OAT", "CIT Auditorium",
-        "Main Building", "New Computing Block", "Blue Shed"
-    ];
-
-    destinations.sort().forEach(name => {
-        fromSelect.append(new Option(name, name));
-        toSelect.append(new Option(name, name));
-    });
-}
-
-
-    async function loadRoutes() {
-        const res = await fetch('/destination_routes.json');
-        routesData = await res.json();
-        populateSelects();
+    // Place an AR entity
+    function placeEntity(lat,lon,modelId,cls,scale,rotation='0 0 0'){
+      const el = document.createElement('a-entity');
+      el.setAttribute('gps-entity-place',
+                      `latitude:${lat}; longitude:${lon}`);
+      el.setAttribute('obj-model',`obj:#${modelId}Obj; mtl:#${modelId}Mtl`);
+      el.setAttribute('scale', scale);
+      el.setAttribute('rotation', rotation);
+      el.classList.add(cls);
+      sceneEl.appendChild(el);
     }
 
-    function placeEntity(lat, lon, modelId, className, scale, rotation = '0 0 0') {
-        const el = document.createElement('a-entity');
-        el.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon}`);
-        el.setAttribute('obj-model', `obj: #${modelId}Obj; mtl: #${modelId}Mtl`);
-        el.setAttribute('position', '0 0 0');
-        el.setAttribute('scale', scale);
-        el.setAttribute('rotation', rotation);
-        el.classList.add(className);
-        sceneEl.appendChild(el);
+    // Draw AR route: pin start/end, arrow at each hop pointing to next
+    function drawRoute(path){
+      clearNav();
+      if(!Array.isArray(path) || path.length<2) return;
+
+      // compute total distance
+      let total = 0;
+      for(let i=0;i<path.length-1;i++){
+        total += haversineMeters(
+          path[i].latitude, path[i].longitude,
+          path[i+1].latitude, path[i+1].longitude
+        );
+      }
+      distanceEl.innerText = `Distance: ${total.toFixed(0)} m`;
+
+      // Place pins
+      [0, path.length-1].forEach(idx=>{
+        const p = path[idx];
+        placeEntity(p.latitude,p.longitude,'pin','nav-pin','3 3 3');
+      });
+
+      // Place arrows at each intermediate hop
+      for(let i=0;i<path.length-1;i++){
+        const A = path[i], B = path[i+1];
+        const bearing = computeBearing(
+          A.latitude, A.longitude, B.latitude, B.longitude
+        );
+        placeEntity(A.latitude,A.longitude,
+                    'arrow','nav-arrow','2 2 2',`0 ${bearing} 0`);
+      }
     }
 
-    function drawRoute(path) {
-        clearNav();
-        if (!Array.isArray(path) || path.length < 2) return;
-
-        let totalDist = 0;
-        for (let i = 0; i < path.length - 1; i++) {
-            const a = path[i], b = path[i + 1];
-            totalDist += haversineMeters(a.latitude, a.longitude, b.latitude, b.longitude);
-        }
-        distanceEl.innerText = `Distance: ${totalDist.toFixed(0)} m`;
-
-        [path[0], path[path.length - 1]].forEach(p => {
-            placeEntity(p.latitude, p.longitude, 'pin', 'nav-pin', '2.5 2.5 2.5');
-        });
-
-        const spacing = 10, arrows = [];
-        for (let i = 0; i < path.length - 1; i++) {
-            const A = path[i], B = path[i + 1];
-            const dist = haversineMeters(A.latitude, A.longitude, B.latitude, B.longitude);
-            const steps = Math.floor(dist / spacing);
-            for (let s = 0; s <= steps; s += 2) {
-                const f = s / steps;
-                const lat = A.latitude + (B.latitude - A.latitude) * f;
-                const lon = A.longitude + (B.longitude - A.longitude) * f;
-                arrows.push({ lat, lon });
-            }
-        }
-
-        for (let i = 0; i < arrows.length - 1; i++) {
-            const a = arrows[i], b = arrows[i + 1];
-            const bearing = computeBearing(a.lat, a.lon, b.lat, b.lon);
-            placeEntity(a.lat, a.lon, 'arrow', 'nav-arrow', '2 2 2', `0 ${bearing} 0`);
-        }
+    // Populate dropdowns from JSON file
+    async function loadDestinations(){
+      const res = await fetch('/dropdown_destinations.json');
+      destinations = await res.json();
+      destinations.sort().forEach(name=>{
+        fromSelect.append(new Option(name,name));
+        toSelect  .append(new Option(name,name));
+      });
     }
 
-    document.getElementById('goBtn').onclick = () => {
-        const from = fromSelect.value, to = toSelect.value;
-        if (!from || !to || from === to) return alert('Select valid start and destination');
-        const key = `${from}--${to}`;
-        const reverseKey = `${to}--${from}`;
-        const route = routesData[key] || routesData[reverseKey];
-        if (!route) return alert('No route found');
-        drawRoute(route);
-        navControls.classList.add('hidden');
-        toggleUI.textContent = '☰';
+    // Load precomputed routes
+    async function loadRoutes(){
+      const res = await fetch('/destination_routes.json');
+      routesData = await res.json();
+    }
+
+    // On Start Navigation
+    goBtn.onclick = ()=>{
+      const from = fromSelect.value;
+      const to   = toSelect.value;
+      if(!from||!to||from===to){
+        return alert('Please select two different destinations.');
+      }
+      const key = `${from}--${to}`;
+      const rev = `${to}--${from}`;
+      const path= routesData[key]||routesData[rev];
+      if(!path){
+        return alert('No route found between those points.');
+      }
+      drawRoute(path);
+      navControls.classList.add('hidden');
+      toggleUI.textContent='☰';
     };
 
-    loadRoutes();
-</script>
+    // Initialize
+    (async ()=>{
+      await loadDestinations();
+      await loadRoutes();
+    })();
+
+  })();
+  </script>
 </body>
 </html>
