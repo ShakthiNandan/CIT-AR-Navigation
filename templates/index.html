@@ -95,19 +95,21 @@
     }
 
     function populateSelects() {
-        const locations = new Set();
-        for (const key in routesData) {
-            const [from, to] = key.split('--');
-            locations.add(from);
-            locations.add(to);
-        }
-        [...locations].sort().forEach(loc => {
-            const opt1 = new Option(loc, loc);
-            const opt2 = new Option(loc, loc);
-            fromSelect.append(opt1);
-            toSelect.append(opt2);
-        });
-    }
+    const destinations = [
+        "Main Gate", "Chemical Lab & Workshop", "Dynamic Lab", "Welding Lab", "Structural Engineering Lab",
+        "Canteen & Gym", "Ladies Hostel", "Volleyball Court", "Basketball Court", "Palani Hostel",
+        "Handball Court", "Grounds", "Vinayaka Temple", "B Mess", "Thirumalai Hostel",
+        "Marudhamalai Hostel", "Kailash Hostel", "Vellaingiri Hostel", "IT Block", "Library",
+        "Computing Block", "TLC", "Polytechnic Block", "OAT", "CIT Auditorium",
+        "Main Building", "New Computing Block", "Blue Shed"
+    ];
+
+    destinations.sort().forEach(name => {
+        fromSelect.append(new Option(name, name));
+        toSelect.append(new Option(name, name));
+    });
+}
+
 
     async function loadRoutes() {
         const res = await fetch('/destination_routes.json');
