@@ -1,0 +1,3291 @@
+{
+  "Main Gate–Chemical Lab & Workshop": [
+    "Main Gate",
+    "Chemical Lab & Workshop"
+  ],
+  "Main Gate–Dynamic Lab": [
+    "Main Gate",
+    "Chemical Lab & Workshop",
+    "Node N9",
+    "Dynamic Lab"
+  ],
+  "Main Gate–Welding Lab": [
+    "Main Gate",
+    "Chemical Lab & Workshop",
+    "Node N9",
+    "Dynamic Lab",
+    "Welding Lab"
+  ],
+  "Main Gate–Structural Engineering Lab": [
+    "Main Gate",
+    "Chemical Lab & Workshop",
+    "Node N9",
+    "Node N11",
+    "Structural Engineering Lab"
+  ],
+  "Main Gate–Canteen & Gym": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Vinayaka Temple",
+    "Canteen & Gym"
+  ],
+  "Main Gate–Ladies Hostel": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Grounds",
+    "Ladies Hostel"
+  ],
+  "Main Gate–Volleyball Court": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Grounds",
+    "Ladies Hostel",
+    "Volleyball Court"
+  ],
+  "Main Gate–Basketball Court": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Grounds",
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Basketball Court"
+  ],
+  "Main Gate–Palani Hostel": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Node N32",
+    "Node N30",
+    "Palani Hostel"
+  ],
+  "Main Gate–Handball Court": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Handball Court"
+  ],
+  "Main Gate–Grounds": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Grounds"
+  ],
+  "Main Gate–Vinayaka Temple": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Vinayaka Temple"
+  ],
+  "Main Gate–B Mess": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Grounds",
+    "Node N35",
+    "Handball Court",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Main Gate–Thirumalai Hostel": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Node N56",
+    "Node N58",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Main Gate–Marudhamalai Hostel": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel",
+    "Marudhamalai Hostel"
+  ],
+  "Main Gate–Kailash Hostel": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel"
+  ],
+  "Main Gate–Vellaingiri Hostel": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel"
+  ],
+  "Main Gate–IT Block": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block"
+  ],
+  "Main Gate–Library": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "Library"
+  ],
+  "Main Gate–Computing Block": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Main Gate–TLC": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Main Gate–Polytechnic Block": [
+    "Main Gate",
+    "Node N3",
+    "Main Building",
+    "Node N6",
+    "OAT",
+    "Node N68",
+    "Polytechnic Block"
+  ],
+  "Main Gate–OAT": [
+    "Main Gate",
+    "Node N3",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Main Gate–CIT Auditorium": [
+    "Main Gate",
+    "Node N3",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Main Gate–Main Building": [
+    "Main Gate",
+    "Node N3",
+    "Main Building"
+  ],
+  "Main Gate–New Computing Block": [
+    "Main Gate",
+    "Node N3",
+    "Main Building",
+    "Node N6",
+    "OAT",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "Main Gate–Blue Shed": [
+    "Main Gate",
+    "Node N122212",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Chemical Lab & Workshop–Dynamic Lab": [
+    "Chemical Lab & Workshop",
+    "Node N9",
+    "Dynamic Lab"
+  ],
+  "Chemical Lab & Workshop–Welding Lab": [
+    "Chemical Lab & Workshop",
+    "Node N9",
+    "Dynamic Lab",
+    "Welding Lab"
+  ],
+  "Chemical Lab & Workshop–Structural Engineering Lab": [
+    "Chemical Lab & Workshop",
+    "Node N9",
+    "Node N11",
+    "Structural Engineering Lab"
+  ],
+  "Chemical Lab & Workshop–Canteen & Gym": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Vinayaka Temple",
+    "Canteen & Gym"
+  ],
+  "Chemical Lab & Workshop–Ladies Hostel": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Grounds",
+    "Ladies Hostel"
+  ],
+  "Chemical Lab & Workshop–Volleyball Court": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Grounds",
+    "Ladies Hostel",
+    "Volleyball Court"
+  ],
+  "Chemical Lab & Workshop–Basketball Court": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Grounds",
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Basketball Court"
+  ],
+  "Chemical Lab & Workshop–Palani Hostel": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Node N32",
+    "Node N30",
+    "Palani Hostel"
+  ],
+  "Chemical Lab & Workshop–Handball Court": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Handball Court"
+  ],
+  "Chemical Lab & Workshop–Grounds": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Grounds"
+  ],
+  "Chemical Lab & Workshop–Vinayaka Temple": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Vinayaka Temple"
+  ],
+  "Chemical Lab & Workshop–B Mess": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Grounds",
+    "Node N35",
+    "Handball Court",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Chemical Lab & Workshop–Thirumalai Hostel": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N85",
+    "Node N56",
+    "Node N58",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Chemical Lab & Workshop–Marudhamalai Hostel": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel",
+    "Marudhamalai Hostel"
+  ],
+  "Chemical Lab & Workshop–Kailash Hostel": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel"
+  ],
+  "Chemical Lab & Workshop–Vellaingiri Hostel": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel"
+  ],
+  "Chemical Lab & Workshop–IT Block": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block"
+  ],
+  "Chemical Lab & Workshop–Library": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "Library"
+  ],
+  "Chemical Lab & Workshop–Computing Block": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Chemical Lab & Workshop–TLC": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Chemical Lab & Workshop–Polytechnic Block": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "Polytechnic Block"
+  ],
+  "Chemical Lab & Workshop–OAT": [
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Chemical Lab & Workshop–CIT Auditorium": [
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Chemical Lab & Workshop–Main Building": [
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Chemical Lab & Workshop–New Computing Block": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "Chemical Lab & Workshop–Blue Shed": [
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Dynamic Lab–Welding Lab": [
+    "Dynamic Lab",
+    "Welding Lab"
+  ],
+  "Dynamic Lab–Structural Engineering Lab": [
+    "Dynamic Lab",
+    "Node N11",
+    "Structural Engineering Lab"
+  ],
+  "Dynamic Lab–Canteen & Gym": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Canteen & Gym"
+  ],
+  "Dynamic Lab–Ladies Hostel": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Canteen & Gym",
+    "Ladies Hostel"
+  ],
+  "Dynamic Lab–Volleyball Court": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Canteen & Gym",
+    "Ladies Hostel",
+    "Volleyball Court"
+  ],
+  "Dynamic Lab–Basketball Court": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Canteen & Gym",
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Basketball Court"
+  ],
+  "Dynamic Lab–Palani Hostel": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Node N32",
+    "Node N30",
+    "Palani Hostel"
+  ],
+  "Dynamic Lab–Handball Court": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Handball Court"
+  ],
+  "Dynamic Lab–Grounds": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Grounds"
+  ],
+  "Dynamic Lab–Vinayaka Temple": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple"
+  ],
+  "Dynamic Lab–B Mess": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Grounds",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Handball Court",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Dynamic Lab–Thirumalai Hostel": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N85",
+    "Node N56",
+    "Node N58",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Dynamic Lab–Marudhamalai Hostel": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel",
+    "Marudhamalai Hostel"
+  ],
+  "Dynamic Lab–Kailash Hostel": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel"
+  ],
+  "Dynamic Lab–Vellaingiri Hostel": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel"
+  ],
+  "Dynamic Lab–IT Block": [
+    "Dynamic Lab",
+    "Node N10",
+    "Node N8",
+    "IT Block"
+  ],
+  "Dynamic Lab–Library": [
+    "Dynamic Lab",
+    "Node N9",
+    "Library"
+  ],
+  "Dynamic Lab–Computing Block": [
+    "Dynamic Lab",
+    "Node N9",
+    "Library",
+    "Computing Block"
+  ],
+  "Dynamic Lab–TLC": [
+    "Dynamic Lab",
+    "Node N9",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Dynamic Lab–Polytechnic Block": [
+    "Dynamic Lab",
+    "Node N9",
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "Polytechnic Block"
+  ],
+  "Dynamic Lab–OAT": [
+    "Dynamic Lab",
+    "Node N9",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Dynamic Lab–CIT Auditorium": [
+    "Dynamic Lab",
+    "Node N9",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Dynamic Lab–Main Building": [
+    "Dynamic Lab",
+    "Node N9",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Dynamic Lab–New Computing Block": [
+    "Dynamic Lab",
+    "Node N9",
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "Dynamic Lab–Blue Shed": [
+    "Dynamic Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed"
+  ],
+  "Welding Lab–Structural Engineering Lab": [
+    "Welding Lab",
+    "Node N11",
+    "Structural Engineering Lab"
+  ],
+  "Welding Lab–Canteen & Gym": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Canteen & Gym"
+  ],
+  "Welding Lab–Ladies Hostel": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Ladies Hostel"
+  ],
+  "Welding Lab–Volleyball Court": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Ladies Hostel",
+    "Volleyball Court"
+  ],
+  "Welding Lab–Basketball Court": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Basketball Court"
+  ],
+  "Welding Lab–Palani Hostel": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Node N32",
+    "Node N30",
+    "Palani Hostel"
+  ],
+  "Welding Lab–Handball Court": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Handball Court"
+  ],
+  "Welding Lab–Grounds": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Grounds"
+  ],
+  "Welding Lab–Vinayaka Temple": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple"
+  ],
+  "Welding Lab–B Mess": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Grounds",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Handball Court",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Welding Lab–Thirumalai Hostel": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Node N56",
+    "Node N58",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Welding Lab–Marudhamalai Hostel": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel",
+    "Marudhamalai Hostel"
+  ],
+  "Welding Lab–Kailash Hostel": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel"
+  ],
+  "Welding Lab–Vellaingiri Hostel": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel"
+  ],
+  "Welding Lab–IT Block": [
+    "Welding Lab",
+    "Node N8",
+    "IT Block"
+  ],
+  "Welding Lab–Library": [
+    "Welding Lab",
+    "Library"
+  ],
+  "Welding Lab–Computing Block": [
+    "Welding Lab",
+    "Library",
+    "Computing Block"
+  ],
+  "Welding Lab–TLC": [
+    "Welding Lab",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Welding Lab–Polytechnic Block": [
+    "Welding Lab",
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "Polytechnic Block"
+  ],
+  "Welding Lab–OAT": [
+    "Welding Lab",
+    "Node N9",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Welding Lab–CIT Auditorium": [
+    "Welding Lab",
+    "Node N9",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Welding Lab–Main Building": [
+    "Welding Lab",
+    "Node N9",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Welding Lab–New Computing Block": [
+    "Welding Lab",
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "Welding Lab–Blue Shed": [
+    "Welding Lab",
+    "Node N11",
+    "Node N14",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed"
+  ],
+  "Structural Engineering Lab–Canteen & Gym": [
+    "Structural Engineering Lab",
+    "Canteen & Gym"
+  ],
+  "Structural Engineering Lab–Ladies Hostel": [
+    "Structural Engineering Lab",
+    "Canteen & Gym",
+    "Ladies Hostel"
+  ],
+  "Structural Engineering Lab–Volleyball Court": [
+    "Structural Engineering Lab",
+    "Canteen & Gym",
+    "Ladies Hostel",
+    "Volleyball Court"
+  ],
+  "Structural Engineering Lab–Basketball Court": [
+    "Structural Engineering Lab",
+    "Canteen & Gym",
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Basketball Court"
+  ],
+  "Structural Engineering Lab–Palani Hostel": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Node N32",
+    "Node N30",
+    "Palani Hostel"
+  ],
+  "Structural Engineering Lab–Handball Court": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Handball Court"
+  ],
+  "Structural Engineering Lab–Grounds": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Grounds"
+  ],
+  "Structural Engineering Lab–Vinayaka Temple": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple"
+  ],
+  "Structural Engineering Lab–B Mess": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Node N39",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Structural Engineering Lab–Thirumalai Hostel": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "Node N86",
+    "Node N85",
+    "Node N56",
+    "Node N58",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Structural Engineering Lab–Marudhamalai Hostel": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel",
+    "Marudhamalai Hostel"
+  ],
+  "Structural Engineering Lab–Kailash Hostel": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel"
+  ],
+  "Structural Engineering Lab–Vellaingiri Hostel": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel"
+  ],
+  "Structural Engineering Lab–IT Block": [
+    "Structural Engineering Lab",
+    "Node N11",
+    "Node N10",
+    "Node N8",
+    "IT Block"
+  ],
+  "Structural Engineering Lab–Library": [
+    "Structural Engineering Lab",
+    "Node N11",
+    "Node N9",
+    "Library"
+  ],
+  "Structural Engineering Lab–Computing Block": [
+    "Structural Engineering Lab",
+    "Node N11",
+    "Node N9",
+    "Library",
+    "Computing Block"
+  ],
+  "Structural Engineering Lab–TLC": [
+    "Structural Engineering Lab",
+    "Node N11",
+    "Node N9",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Structural Engineering Lab–Polytechnic Block": [
+    "Structural Engineering Lab",
+    "Node N11",
+    "Node N9",
+    "Library",
+    "Computing Block",
+    "TLC",
+    "Node N66",
+    "Polytechnic Block"
+  ],
+  "Structural Engineering Lab–OAT": [
+    "Structural Engineering Lab",
+    "Node N11",
+    "Node N9",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Structural Engineering Lab–CIT Auditorium": [
+    "Structural Engineering Lab",
+    "Node N11",
+    "Node N9",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Structural Engineering Lab–Main Building": [
+    "Structural Engineering Lab",
+    "Node N11",
+    "Node N9",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Structural Engineering Lab–New Computing Block": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "New Computing Block"
+  ],
+  "Structural Engineering Lab–Blue Shed": [
+    "Structural Engineering Lab",
+    "Node N16",
+    "Vinayaka Temple",
+    "Blue Shed"
+  ],
+  "Canteen & Gym–Ladies Hostel": [
+    "Canteen & Gym",
+    "Ladies Hostel"
+  ],
+  "Canteen & Gym–Volleyball Court": [
+    "Canteen & Gym",
+    "Ladies Hostel",
+    "Volleyball Court"
+  ],
+  "Canteen & Gym–Basketball Court": [
+    "Canteen & Gym",
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Basketball Court"
+  ],
+  "Canteen & Gym–Palani Hostel": [
+    "Canteen & Gym",
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N30",
+    "Palani Hostel"
+  ],
+  "Canteen & Gym–Handball Court": [
+    "Canteen & Gym",
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Node N34",
+    "Handball Court"
+  ],
+  "Canteen & Gym–Grounds": [
+    "Canteen & Gym",
+    "Grounds"
+  ],
+  "Canteen & Gym–Vinayaka Temple": [
+    "Canteen & Gym",
+    "Vinayaka Temple"
+  ],
+  "Canteen & Gym–B Mess": [
+    "Canteen & Gym",
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Canteen & Gym–Thirumalai Hostel": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Node N56",
+    "Node N58",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Canteen & Gym–Marudhamalai Hostel": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel",
+    "Marudhamalai Hostel"
+  ],
+  "Canteen & Gym–Kailash Hostel": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel"
+  ],
+  "Canteen & Gym–Vellaingiri Hostel": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel"
+  ],
+  "Canteen & Gym–IT Block": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block"
+  ],
+  "Canteen & Gym–Library": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "Canteen & Gym–Computing Block": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Canteen & Gym–TLC": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Canteen & Gym–Polytechnic Block": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N75",
+    "Polytechnic Block"
+  ],
+  "Canteen & Gym–OAT": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Canteen & Gym–CIT Auditorium": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Canteen & Gym–Main Building": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Canteen & Gym–New Computing Block": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "New Computing Block"
+  ],
+  "Canteen & Gym–Blue Shed": [
+    "Canteen & Gym",
+    "Vinayaka Temple",
+    "Blue Shed"
+  ],
+  "Ladies Hostel–Volleyball Court": [
+    "Ladies Hostel",
+    "Volleyball Court"
+  ],
+  "Ladies Hostel–Basketball Court": [
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Basketball Court"
+  ],
+  "Ladies Hostel–Palani Hostel": [
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N30",
+    "Palani Hostel"
+  ],
+  "Ladies Hostel–Handball Court": [
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Node N34",
+    "Handball Court"
+  ],
+  "Ladies Hostel–Grounds": [
+    "Ladies Hostel",
+    "Grounds"
+  ],
+  "Ladies Hostel–Vinayaka Temple": [
+    "Ladies Hostel",
+    "Canteen & Gym",
+    "Vinayaka Temple"
+  ],
+  "Ladies Hostel–B Mess": [
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Ladies Hostel–Thirumalai Hostel": [
+    "Ladies Hostel",
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Ladies Hostel–Marudhamalai Hostel": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel",
+    "Marudhamalai Hostel"
+  ],
+  "Ladies Hostel–Kailash Hostel": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel"
+  ],
+  "Ladies Hostel–Vellaingiri Hostel": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel"
+  ],
+  "Ladies Hostel–IT Block": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block"
+  ],
+  "Ladies Hostel–Library": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "Ladies Hostel–Computing Block": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Ladies Hostel–TLC": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Ladies Hostel–Polytechnic Block": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N75",
+    "Polytechnic Block"
+  ],
+  "Ladies Hostel–OAT": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Ladies Hostel–CIT Auditorium": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Ladies Hostel–Main Building": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Ladies Hostel–New Computing Block": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "New Computing Block"
+  ],
+  "Ladies Hostel–Blue Shed": [
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Volleyball Court–Basketball Court": [
+    "Volleyball Court",
+    "Basketball Court"
+  ],
+  "Volleyball Court–Palani Hostel": [
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N30",
+    "Palani Hostel"
+  ],
+  "Volleyball Court–Handball Court": [
+    "Volleyball Court",
+    "Node N34",
+    "Handball Court"
+  ],
+  "Volleyball Court–Grounds": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds"
+  ],
+  "Volleyball Court–Vinayaka Temple": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Canteen & Gym",
+    "Vinayaka Temple"
+  ],
+  "Volleyball Court–B Mess": [
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Volleyball Court–Thirumalai Hostel": [
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Volleyball Court–Marudhamalai Hostel": [
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N59",
+    "Node N49",
+    "Marudhamalai Hostel"
+  ],
+  "Volleyball Court–Kailash Hostel": [
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N55",
+    "Kailash Hostel"
+  ],
+  "Volleyball Court–Vellaingiri Hostel": [
+    "Volleyball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N56",
+    "Vellaingiri Hostel"
+  ],
+  "Volleyball Court–IT Block": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block"
+  ],
+  "Volleyball Court–Library": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "Volleyball Court–Computing Block": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Volleyball Court–TLC": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Volleyball Court–Polytechnic Block": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N75",
+    "Polytechnic Block"
+  ],
+  "Volleyball Court–OAT": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Volleyball Court–CIT Auditorium": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Volleyball Court–Main Building": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Volleyball Court–New Computing Block": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "New Computing Block"
+  ],
+  "Volleyball Court–Blue Shed": [
+    "Volleyball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Basketball Court–Palani Hostel": [
+    "Basketball Court",
+    "Node N42",
+    "Node N31",
+    "Node N30",
+    "Palani Hostel"
+  ],
+  "Basketball Court–Handball Court": [
+    "Basketball Court",
+    "Volleyball Court",
+    "Node N34",
+    "Handball Court"
+  ],
+  "Basketball Court–Grounds": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds"
+  ],
+  "Basketball Court–Vinayaka Temple": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Canteen & Gym",
+    "Vinayaka Temple"
+  ],
+  "Basketball Court–B Mess": [
+    "Basketball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Basketball Court–Thirumalai Hostel": [
+    "Basketball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Basketball Court–Marudhamalai Hostel": [
+    "Basketball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N59",
+    "Node N49",
+    "Marudhamalai Hostel"
+  ],
+  "Basketball Court–Kailash Hostel": [
+    "Basketball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N55",
+    "Kailash Hostel"
+  ],
+  "Basketball Court–Vellaingiri Hostel": [
+    "Basketball Court",
+    "Node N42",
+    "Node N31",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N56",
+    "Vellaingiri Hostel"
+  ],
+  "Basketball Court–IT Block": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block"
+  ],
+  "Basketball Court–Library": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "Basketball Court–Computing Block": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Basketball Court–TLC": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Basketball Court–Polytechnic Block": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N75",
+    "Polytechnic Block"
+  ],
+  "Basketball Court–OAT": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Basketball Court–CIT Auditorium": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Basketball Court–Main Building": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Basketball Court–New Computing Block": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "New Computing Block"
+  ],
+  "Basketball Court–Blue Shed": [
+    "Basketball Court",
+    "Ladies Hostel",
+    "Grounds",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Palani Hostel–Handball Court": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court"
+  ],
+  "Palani Hostel–Grounds": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N35",
+    "Grounds"
+  ],
+  "Palani Hostel–Vinayaka Temple": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "Vinayaka Temple"
+  ],
+  "Palani Hostel–B Mess": [
+    "Palani Hostel",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Palani Hostel–Thirumalai Hostel": [
+    "Palani Hostel",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Palani Hostel–Marudhamalai Hostel": [
+    "Palani Hostel",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N59",
+    "Node N49",
+    "Marudhamalai Hostel"
+  ],
+  "Palani Hostel–Kailash Hostel": [
+    "Palani Hostel",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N55",
+    "Kailash Hostel"
+  ],
+  "Palani Hostel–Vellaingiri Hostel": [
+    "Palani Hostel",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N56",
+    "Vellaingiri Hostel"
+  ],
+  "Palani Hostel–IT Block": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N35",
+    "Grounds",
+    "Node N39",
+    "IT Block"
+  ],
+  "Palani Hostel–Library": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "Palani Hostel–Computing Block": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Palani Hostel–TLC": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Palani Hostel–Polytechnic Block": [
+    "Palani Hostel",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Polytechnic Block"
+  ],
+  "Palani Hostel–OAT": [
+    "Palani Hostel",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT"
+  ],
+  "Palani Hostel–CIT Auditorium": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Palani Hostel–Main Building": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Palani Hostel–New Computing Block": [
+    "Palani Hostel",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block"
+  ],
+  "Palani Hostel–Blue Shed": [
+    "Palani Hostel",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Handball Court–Grounds": [
+    "Handball Court",
+    "Node N35",
+    "Grounds"
+  ],
+  "Handball Court–Vinayaka Temple": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "Vinayaka Temple"
+  ],
+  "Handball Court–B Mess": [
+    "Handball Court",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Handball Court–Thirumalai Hostel": [
+    "Handball Court",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Handball Court–Marudhamalai Hostel": [
+    "Handball Court",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N59",
+    "Node N49",
+    "Marudhamalai Hostel"
+  ],
+  "Handball Court–Kailash Hostel": [
+    "Handball Court",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N55",
+    "Kailash Hostel"
+  ],
+  "Handball Court–Vellaingiri Hostel": [
+    "Handball Court",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "Node N83",
+    "Node N56",
+    "Vellaingiri Hostel"
+  ],
+  "Handball Court–IT Block": [
+    "Handball Court",
+    "Node N35",
+    "Grounds",
+    "Node N39",
+    "IT Block"
+  ],
+  "Handball Court–Library": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "Handball Court–Computing Block": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Handball Court–TLC": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Handball Court–Polytechnic Block": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N75",
+    "Polytechnic Block"
+  ],
+  "Handball Court–OAT": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Handball Court–CIT Auditorium": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Handball Court–Main Building": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Handball Court–New Computing Block": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "New Computing Block"
+  ],
+  "Handball Court–Blue Shed": [
+    "Handball Court",
+    "Node N35",
+    "Node N37",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Grounds–Vinayaka Temple": [
+    "Grounds",
+    "Node N39",
+    "Vinayaka Temple"
+  ],
+  "Grounds–B Mess": [
+    "Grounds",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Grounds–Thirumalai Hostel": [
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N85",
+    "Node N56",
+    "Node N58",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Grounds–Marudhamalai Hostel": [
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel",
+    "Marudhamalai Hostel"
+  ],
+  "Grounds–Kailash Hostel": [
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel"
+  ],
+  "Grounds–Vellaingiri Hostel": [
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel"
+  ],
+  "Grounds–IT Block": [
+    "Grounds",
+    "Node N39",
+    "IT Block"
+  ],
+  "Grounds–Library": [
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "Grounds–Computing Block": [
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Grounds–TLC": [
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Grounds–Polytechnic Block": [
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "Node N75",
+    "Polytechnic Block"
+  ],
+  "Grounds–OAT": [
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Grounds–CIT Auditorium": [
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Grounds–Main Building": [
+    "Grounds",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Grounds–New Computing Block": [
+    "Grounds",
+    "Node N39",
+    "Blue Shed",
+    "Node N80",
+    "Node N78",
+    "New Computing Block"
+  ],
+  "Grounds–Blue Shed": [
+    "Grounds",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Vinayaka Temple–B Mess": [
+    "Vinayaka Temple",
+    "Node N39",
+    "Node N37",
+    "Node N36",
+    "Node N34",
+    "Node N32",
+    "Node N30",
+    "Node N29",
+    "Node N44",
+    "Node N60",
+    "B Mess"
+  ],
+  "Vinayaka Temple–Thirumalai Hostel": [
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Node N56",
+    "Node N58",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "Vinayaka Temple–Marudhamalai Hostel": [
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel",
+    "Marudhamalai Hostel"
+  ],
+  "Vinayaka Temple–Kailash Hostel": [
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel",
+    "Kailash Hostel"
+  ],
+  "Vinayaka Temple–Vellaingiri Hostel": [
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "Node N86",
+    "Node N84",
+    "Vellaingiri Hostel"
+  ],
+  "Vinayaka Temple–IT Block": [
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block"
+  ],
+  "Vinayaka Temple–Library": [
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "Vinayaka Temple–Computing Block": [
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "Vinayaka Temple–TLC": [
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Vinayaka Temple–Polytechnic Block": [
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "Node N75",
+    "Polytechnic Block"
+  ],
+  "Vinayaka Temple–OAT": [
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "Vinayaka Temple–CIT Auditorium": [
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Vinayaka Temple–Main Building": [
+    "Vinayaka Temple",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Vinayaka Temple–New Computing Block": [
+    "Vinayaka Temple",
+    "Blue Shed",
+    "Node N81",
+    "Node N79",
+    "Node N78",
+    "New Computing Block"
+  ],
+  "Vinayaka Temple–Blue Shed": [
+    "Vinayaka Temple",
+    "Blue Shed"
+  ],
+  "B Mess–Thirumalai Hostel": [
+    "B Mess",
+    "Node N59",
+    "Thirumalai Hostel"
+  ],
+  "B Mess–Marudhamalai Hostel": [
+    "B Mess",
+    "Node N59",
+    "Node N49",
+    "Marudhamalai Hostel"
+  ],
+  "B Mess–Kailash Hostel": [
+    "B Mess",
+    "Node N83",
+    "Node N55",
+    "Kailash Hostel"
+  ],
+  "B Mess–Vellaingiri Hostel": [
+    "B Mess",
+    "Node N83",
+    "Node N56",
+    "Vellaingiri Hostel"
+  ],
+  "B Mess–IT Block": [
+    "B Mess",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N35",
+    "Grounds",
+    "Node N39",
+    "IT Block"
+  ],
+  "B Mess–Library": [
+    "B Mess",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "B Mess–Computing Block": [
+    "B Mess",
+    "Node N83",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC",
+    "Computing Block"
+  ],
+  "B Mess–TLC": [
+    "B Mess",
+    "Node N83",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC"
+  ],
+  "B Mess–Polytechnic Block": [
+    "B Mess",
+    "Node N83",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Polytechnic Block"
+  ],
+  "B Mess–OAT": [
+    "B Mess",
+    "Node N83",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT"
+  ],
+  "B Mess–CIT Auditorium": [
+    "B Mess",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "B Mess–Main Building": [
+    "B Mess",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "B Mess–New Computing Block": [
+    "B Mess",
+    "Node N83",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block"
+  ],
+  "B Mess–Blue Shed": [
+    "B Mess",
+    "Node N30",
+    "Node N32",
+    "Handball Court",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Thirumalai Hostel–Marudhamalai Hostel": [
+    "Thirumalai Hostel",
+    "Node N49",
+    "Marudhamalai Hostel"
+  ],
+  "Thirumalai Hostel–Kailash Hostel": [
+    "Thirumalai Hostel",
+    "Node N49",
+    "Marudhamalai Hostel",
+    "Kailash Hostel"
+  ],
+  "Thirumalai Hostel–Vellaingiri Hostel": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N58",
+    "Node N55",
+    "Vellaingiri Hostel"
+  ],
+  "Thirumalai Hostel–IT Block": [
+    "Thirumalai Hostel",
+    "Node N47",
+    "Node N46",
+    "Node N60",
+    "Node N61",
+    "Node N34",
+    "Node N36",
+    "Node N37",
+    "Node N39",
+    "IT Block"
+  ],
+  "Thirumalai Hostel–Library": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC",
+    "Computing Block",
+    "Library"
+  ],
+  "Thirumalai Hostel–Computing Block": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC",
+    "Computing Block"
+  ],
+  "Thirumalai Hostel–TLC": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC"
+  ],
+  "Thirumalai Hostel–Polytechnic Block": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Polytechnic Block"
+  ],
+  "Thirumalai Hostel–OAT": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT"
+  ],
+  "Thirumalai Hostel–CIT Auditorium": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "CIT Auditorium"
+  ],
+  "Thirumalai Hostel–Main Building": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "Main Building"
+  ],
+  "Thirumalai Hostel–New Computing Block": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N77",
+    "New Computing Block"
+  ],
+  "Thirumalai Hostel–Blue Shed": [
+    "Thirumalai Hostel",
+    "Node N59",
+    "Node N56",
+    "Node N84",
+    "Node N85",
+    "Node N78",
+    "Node N80",
+    "Blue Shed"
+  ],
+  "Marudhamalai Hostel–Kailash Hostel": [
+    "Marudhamalai Hostel",
+    "Kailash Hostel"
+  ],
+  "Marudhamalai Hostel–Vellaingiri Hostel": [
+    "Marudhamalai Hostel",
+    "Kailash Hostel",
+    "Vellaingiri Hostel"
+  ],
+  "Marudhamalai Hostel–IT Block": [
+    "Marudhamalai Hostel",
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N78",
+    "Node N80",
+    "Node N39",
+    "IT Block"
+  ],
+  "Marudhamalai Hostel–Library": [
+    "Marudhamalai Hostel",
+    "Node N52",
+    "Node N66",
+    "TLC",
+    "Computing Block",
+    "Library"
+  ],
+  "Marudhamalai Hostel–Computing Block": [
+    "Marudhamalai Hostel",
+    "Node N52",
+    "Node N66",
+    "TLC",
+    "Computing Block"
+  ],
+  "Marudhamalai Hostel–TLC": [
+    "Marudhamalai Hostel",
+    "Node N52",
+    "Node N66",
+    "TLC"
+  ],
+  "Marudhamalai Hostel–Polytechnic Block": [
+    "Marudhamalai Hostel",
+    "Node N52",
+    "Node N66",
+    "Polytechnic Block"
+  ],
+  "Marudhamalai Hostel–OAT": [
+    "Marudhamalai Hostel",
+    "Node N52",
+    "Node N66",
+    "Node N68",
+    "OAT"
+  ],
+  "Marudhamalai Hostel–CIT Auditorium": [
+    "Marudhamalai Hostel",
+    "Node N52",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "CIT Auditorium"
+  ],
+  "Marudhamalai Hostel–Main Building": [
+    "Marudhamalai Hostel",
+    "Node N52",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "Main Building"
+  ],
+  "Marudhamalai Hostel–New Computing Block": [
+    "Marudhamalai Hostel",
+    "Node N52",
+    "New Computing Block"
+  ],
+  "Marudhamalai Hostel–Blue Shed": [
+    "Marudhamalai Hostel",
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N78",
+    "Node N80",
+    "Blue Shed"
+  ],
+  "Kailash Hostel–Vellaingiri Hostel": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel"
+  ],
+  "Kailash Hostel–IT Block": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N78",
+    "Node N79",
+    "Node N39",
+    "IT Block"
+  ],
+  "Kailash Hostel–Library": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC",
+    "Computing Block",
+    "Library"
+  ],
+  "Kailash Hostel–Computing Block": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC",
+    "Computing Block"
+  ],
+  "Kailash Hostel–TLC": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC"
+  ],
+  "Kailash Hostel–Polytechnic Block": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Polytechnic Block"
+  ],
+  "Kailash Hostel–OAT": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT"
+  ],
+  "Kailash Hostel–CIT Auditorium": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "CIT Auditorium"
+  ],
+  "Kailash Hostel–Main Building": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "Main Building"
+  ],
+  "Kailash Hostel–New Computing Block": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block"
+  ],
+  "Kailash Hostel–Blue Shed": [
+    "Kailash Hostel",
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N78",
+    "Node N80",
+    "Blue Shed"
+  ],
+  "Vellaingiri Hostel–IT Block": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N78",
+    "Node N79",
+    "Node N81",
+    "Node N39",
+    "IT Block"
+  ],
+  "Vellaingiri Hostel–Library": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC",
+    "Computing Block",
+    "Library"
+  ],
+  "Vellaingiri Hostel–Computing Block": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC",
+    "Computing Block"
+  ],
+  "Vellaingiri Hostel–TLC": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "TLC"
+  ],
+  "Vellaingiri Hostel–Polytechnic Block": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Polytechnic Block"
+  ],
+  "Vellaingiri Hostel–OAT": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT"
+  ],
+  "Vellaingiri Hostel–CIT Auditorium": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "CIT Auditorium"
+  ],
+  "Vellaingiri Hostel–Main Building": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "Main Building"
+  ],
+  "Vellaingiri Hostel–New Computing Block": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N77",
+    "New Computing Block"
+  ],
+  "Vellaingiri Hostel–Blue Shed": [
+    "Vellaingiri Hostel",
+    "Node N85",
+    "Node N78",
+    "Node N80",
+    "Blue Shed"
+  ],
+  "IT Block–Library": [
+    "IT Block",
+    "Node N8",
+    "Library"
+  ],
+  "IT Block–Computing Block": [
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block"
+  ],
+  "IT Block–TLC": [
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "IT Block–Polytechnic Block": [
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "Polytechnic Block"
+  ],
+  "IT Block–OAT": [
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "Node N6",
+    "OAT"
+  ],
+  "IT Block–CIT Auditorium": [
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "IT Block–Main Building": [
+    "IT Block",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "IT Block–New Computing Block": [
+    "IT Block",
+    "Node N8",
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "IT Block–Blue Shed": [
+    "IT Block",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Library–Computing Block": [
+    "Library",
+    "Computing Block"
+  ],
+  "Library–TLC": [
+    "Library",
+    "Computing Block",
+    "TLC"
+  ],
+  "Library–Polytechnic Block": [
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "Polytechnic Block"
+  ],
+  "Library–OAT": [
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT"
+  ],
+  "Library–CIT Auditorium": [
+    "Library",
+    "Node N8",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Library–Main Building": [
+    "Library",
+    "Node N8",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Library–New Computing Block": [
+    "Library",
+    "Computing Block",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "Library–Blue Shed": [
+    "Library",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Computing Block–TLC": [
+    "Computing Block",
+    "TLC"
+  ],
+  "Computing Block–Polytechnic Block": [
+    "Computing Block",
+    "Node N66",
+    "Polytechnic Block"
+  ],
+  "Computing Block–OAT": [
+    "Computing Block",
+    "Node N66",
+    "Node N68",
+    "OAT"
+  ],
+  "Computing Block–CIT Auditorium": [
+    "Computing Block",
+    "Node N8",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building",
+    "CIT Auditorium"
+  ],
+  "Computing Block–Main Building": [
+    "Computing Block",
+    "Node N8",
+    "Chemical Lab & Workshop",
+    "Node N5",
+    "Main Building"
+  ],
+  "Computing Block–New Computing Block": [
+    "Computing Block",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "Computing Block–Blue Shed": [
+    "Computing Block",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "TLC–Polytechnic Block": [
+    "TLC",
+    "Node N66",
+    "Polytechnic Block"
+  ],
+  "TLC–OAT": [
+    "TLC",
+    "Node N66",
+    "Node N68",
+    "OAT"
+  ],
+  "TLC–CIT Auditorium": [
+    "TLC",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "CIT Auditorium"
+  ],
+  "TLC–Main Building": [
+    "TLC",
+    "Node N66",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "Main Building"
+  ],
+  "TLC–New Computing Block": [
+    "TLC",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "TLC–Blue Shed": [
+    "TLC",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Polytechnic Block–OAT": [
+    "Polytechnic Block",
+    "Node N68",
+    "OAT"
+  ],
+  "Polytechnic Block–CIT Auditorium": [
+    "Polytechnic Block",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "CIT Auditorium"
+  ],
+  "Polytechnic Block–Main Building": [
+    "Polytechnic Block",
+    "Node N68",
+    "OAT",
+    "Node N6",
+    "Main Building"
+  ],
+  "Polytechnic Block–New Computing Block": [
+    "Polytechnic Block",
+    "New Computing Block"
+  ],
+  "Polytechnic Block–Blue Shed": [
+    "Polytechnic Block",
+    "Node N75",
+    "Node N78",
+    "Node N80",
+    "Blue Shed"
+  ],
+  "OAT–CIT Auditorium": [
+    "OAT",
+    "Node N6",
+    "CIT Auditorium"
+  ],
+  "OAT–Main Building": [
+    "OAT",
+    "Node N6",
+    "Main Building"
+  ],
+  "OAT–New Computing Block": [
+    "OAT",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "OAT–Blue Shed": [
+    "OAT",
+    "Node N68",
+    "Node N75",
+    "Node N78",
+    "Node N80",
+    "Blue Shed"
+  ],
+  "CIT Auditorium–Main Building": [
+    "CIT Auditorium",
+    "Main Building"
+  ],
+  "CIT Auditorium–New Computing Block": [
+    "CIT Auditorium",
+    "Node N6",
+    "OAT",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "CIT Auditorium–Blue Shed": [
+    "CIT Auditorium",
+    "Node N5",
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "Main Building–New Computing Block": [
+    "Main Building",
+    "Node N6",
+    "OAT",
+    "Node N66",
+    "New Computing Block"
+  ],
+  "Main Building–Blue Shed": [
+    "Main Building",
+    "Node N5",
+    "Chemical Lab & Workshop",
+    "Node N8",
+    "IT Block",
+    "Node N39",
+    "Blue Shed"
+  ],
+  "New Computing Block–Blue Shed": [
+    "New Computing Block",
+    "Node N78",
+    "Node N80",
+    "Blue Shed"
+  ]
+}
